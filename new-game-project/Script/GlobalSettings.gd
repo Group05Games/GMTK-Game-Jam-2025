@@ -1,11 +1,10 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var CityStats : Dictionary = {
+	"Population" : 0,
+	"Gold" : 0,
+	"Wood" : 0,
+	"Metal" : 0,
+	"Food" : 0,
+	"State" : 0,
+}

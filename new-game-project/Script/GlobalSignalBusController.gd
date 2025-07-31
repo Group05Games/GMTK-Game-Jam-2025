@@ -1,11 +1,11 @@
 extends Node
 
+## Example of Singal Structure
+## Before any functions create the signal as below:
+## signal Name_Of_Signal(Variables_To_Pass_X, Variables_To_Pass_Y)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+##Inside the _ready() script that is going to "Talk" create the listener:
+## Object.Name_Of_Signal.connect(Function_To_Call)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+## When calling the signal:
+## emit_signal(Name_Of_Signal, Variables_To_Pass_X, Variables_To_Pass_Y)
