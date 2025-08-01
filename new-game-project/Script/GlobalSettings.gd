@@ -9,17 +9,20 @@ var CityStats : Dictionary = {
 	"State" : 0,
 }
 
-var TileDictionary : Dictionary = {
-	"0" : {"Name" : "Grasslands", "Move Cost" : 1, "Resource" : "Wheat"},
-	"1" : {"Name" : "Forest", "Move Cost" : 1, "Resource" : "Wood"},
-	"2" : {"Name" : "Bog", "Move Cost" : 1, "Resource" : "None"},
-	"3" : {"Name" : "Water", "Move Cost" : 5, "Resource" : "None"},
-	"4" : {"Name" : "Mountain", "Move Cost" : 1, "Resource" : "Metal"},
-	"5" : {"Name" : "Mine", "Move Cost" : 1, "Resource" : "Metal"},
-	"6" : {"Name" : "Volcano", "Move Cost" : 1, "Resource" : "Metal"},
-	"7" : {"Name" : "City", "Move Cost" : 1},
-	"8" : {"Name" : "Town", "Move Cost" : 1},
-}
+enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
+var TileDictionary : Dictionary = {
+	"0" : {"Name" : "Grasslands", "Move Cost" : 1, "Resource" : ResourceType.WHEAT},
+	"1" : {"Name" : "Forest", "Move Cost" : 1, "Resource" : ResourceType.WOOD},
+	"2" : {"Name" : "Bog", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"3" : {"Name" : "Water", "Move Cost" : 5, "Resource" : ResourceType.NONE},
+	"4" : {"Name" : "Mountain", "Move Cost" : 10, "Resource" : ResourceType.METAL},
+	"5" : {"Name" : "Mine", "Move Cost" : 1, "Resource" : ResourceType.METAL, "NeighborBonuses": {"4": 1, "6": 4, "3": -1}},
+	"6" : {"Name" : "Volcano", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"7" : {"Name" : "City", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"8" : {"Name" : "Town", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"9" : {"Name" : "Sawmill", "Move Cost" : 1, "Resource" : ResourceType.WOOD, "NeighborBonuses": {"1": 1}},
+	"10": {"Name" : "Farm", "Move Cost": 1, "Resource": ResourceType.WHEAT, "NeighborBonuses": {"0": 1}}
+}
 
 var ScrollSpeed : float = 0.2
