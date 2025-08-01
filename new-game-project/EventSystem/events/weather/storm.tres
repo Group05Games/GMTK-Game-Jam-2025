@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GameEvent" load_steps=2 format=3 uid="uid://c6p0usyrj0okh"]
+
+[ext_resource type="Script" uid="uid://d3ho0r7xb53i" path="res://EventSystem/GameEvent.gd" id="1_xaqbi"]
+
+[resource]
+script = ExtResource("1_xaqbi")
+name = ""
+description = ""
+category = ""
+valid_tile_types = Array[String]([])
+options = Array[Dictionary]([])
+metadata/_custom_type_script = "uid://d3ho0r7xb53i"
