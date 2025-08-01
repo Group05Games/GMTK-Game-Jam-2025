@@ -11,6 +11,7 @@ var CityStats : Dictionary = {
 
 enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
+## Make sure the ID number of the Tile Dictionary matches the ID number of the TileSet.
 var TileDictionary : Dictionary = {
 	"0" : {"Name" : "Grasslands", "Move Cost" : 1, "Resource" : ResourceType.WHEAT},
 	"1" : {"Name" : "Forest", "Move Cost" : 1, "Resource" : ResourceType.WOOD},
