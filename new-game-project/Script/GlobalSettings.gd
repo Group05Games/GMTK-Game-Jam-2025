@@ -1,13 +1,10 @@
 extends Node
 
-var CityStats : Dictionary = {
-	"Population" : 0,
-	"Gold" : 0,
-	"Wood" : 0,
-	"Metal" : 0,
-	"Food" : 0,
-	"State" : 0,
-}
+
+var CityInventory : Inventory = Inventory.new()
+var temp : Inventory = Inventory.new()
+
+var CityState =  0
 
 enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
@@ -30,3 +27,25 @@ var ScrollSpeed : float = 0.2
 var MoveSpeed : float = 600
 var MaxZoom : float = 2.0
 var MinZoom : float = 0.1
+
+func _ready():
+	temp.setItems(["Wood", "Gold", "Population"], [1, -1, 3])
+	
+	print("Wood " + str(CityInventory.inventory["Wood"]))
+	print("Gold " + str(CityInventory.inventory["Gold"]))
+	CityInventory.addArray(["Wood", "Gold"], [2, 1])
+	print()
+	print("Wood " + str(CityInventory.inventory["Wood"]))
+	print("Gold " + str(CityInventory.inventory["Gold"]))
+	CityInventory.addArray(["Wood"], [-2])
+	print()
+	print("Wood " + str(CityInventory.inventory["Wood"]))
+	print("Gold " + str(CityInventory.inventory["Gold"]))
+	#CityInventory.emptyInventory()
+	#print("Wood " + str(CityInventory.inventory["Wood"]))
+	#print("Gold " + str(CityInventory.inventory["Gold"]))
+	CityInventory.addInventory(temp.inventory)
+	print()
+	print("Wood " + str(CityInventory.inventory["Wood"]))
+	print("Gold " + str(CityInventory.inventory["Gold"]))
+	print("Pop " + str(CityInventory.inventory["Population"]))
