@@ -1,25 +1,25 @@
 extends Camera2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("Up"):
-		self.global_position += Vector2(0, -10)
-	if Input.is_action_pressed("Down"):
-		self.global_position += Vector2(0, 10)
-	if Input.is_action_pressed("Left"):
-		self.global_position += Vector2(-10, 0)
-	if Input.is_action_pressed("Right"):
-		self.global_position += Vector2(10, 0)
-		
+	handle_movement(delta)
+	handle_zoom()
+
+func handle_movement(delta: float) -> void:
+	var input_vector := Input.get_vector("Left", "Right", "Up", "Down")
+	if input_vector != Vector2.ZERO:
+		self.global_position += input_vector * GlobalSettings.MoveSpeed * delta
+
+func handle_zoom() -> void:
+	var scroll_delta := Vector2(GlobalSettings.ScrollSpeed, GlobalSettings.ScrollSpeed)
+
 	if Input.is_action_just_pressed("Scroll_Up"):
-		if zoom.x < 2 && zoom.y < 2:
-			zoom += Vector2(GlobalSettings.ScrollSpeed, GlobalSettings.ScrollSpeed)
-		
+		zoom = clamp_vector2(zoom + scroll_delta, GlobalSettings.MinZoom, GlobalSettings.MaxZoom)
+
 	if Input.is_action_just_pressed("Scroll_Down"):
-		if zoom.x > 0 && zoom.y > 0:
-			zoom -= Vector2(GlobalSettings.ScrollSpeed, GlobalSettings.ScrollSpeed)
+		zoom = clamp_vector2(zoom - scroll_delta, GlobalSettings.MinZoom, GlobalSettings.MaxZoom)
+
+func clamp_vector2(vec: Vector2, min_val: float, max_val: float) -> Vector2:
+	return Vector2(
+		clamp(vec.x, min_val, max_val),
+		clamp(vec.y, min_val, max_val)
+	)

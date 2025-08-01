@@ -27,3 +27,6 @@ var TileDictionary : Dictionary = {
 }
 
 var ScrollSpeed : float = 0.2
+var MoveSpeed : float = 600
+var MaxZoom : float = 2.0
+var MinZoom : float = 0.1
