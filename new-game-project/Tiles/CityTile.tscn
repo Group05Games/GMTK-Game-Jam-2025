@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://v6qnqldr2yxu"]
+
+[ext_resource type="Script" uid="uid://cuwhu7fajiiar" path="res://Script/Tiles/city_tile.gd" id="1_l6uj1"]
+
+[node name="CityTile" type="Node2D"]
+script = ExtResource("1_l6uj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
