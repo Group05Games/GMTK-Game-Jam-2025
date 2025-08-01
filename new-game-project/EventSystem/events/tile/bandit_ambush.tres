@@ -1,12 +1,34 @@
-[gd_resource type="Resource" script_class="GameEvent" load_steps=2 format=3 uid="uid://c13nwswljox86"]
+[gd_resource type="Resource" script_class="GameEvent" load_steps=9 format=3 uid="uid://c13nwswljox86"]
 
+[ext_resource type="Script" uid="uid://bc760s8e75db1" path="res://EventSystem/OptionData.gd" id="1_h0dti"]
 [ext_resource type="Script" uid="uid://d3ho0r7xb53i" path="res://EventSystem/GameEvent.gd" id="1_v14cx"]
+[ext_resource type="Script" uid="uid://df6sq78gvxths" path="res://EventSystem/effects/pay_bandits.gd" id="2_07al1"]
+[ext_resource type="Script" uid="uid://c2d47v14ehhbd" path="res://EventSystem/triggers/wealthy_player_trigger.gd" id="2_jko2c"]
+[ext_resource type="Script" uid="uid://d1pfmdnuste28" path="res://EventSystem/effects/fight_bandits.gd" id="3_u3k50"]
+
+[sub_resource type="PlaceholderTexture2DArray" id="PlaceholderTexture2DArray_ot5i1"]
+
+[sub_resource type="Resource" id="Resource_slbgm"]
+script = ExtResource("1_h0dti")
+text = "Pay them off."
+tooltip = "Lose some money but avoid conflict"
+effect_script = ExtResource("2_07al1")
+metadata/_custom_type_script = "uid://bc760s8e75db1"
+
+[sub_resource type="Resource" id="Resource_6lmrr"]
+script = ExtResource("1_h0dti")
+text = "Fight back"
+tooltip = "Risk caravan loss but save money."
+effect_script = ExtResource("3_u3k50")
+metadata/_custom_type_script = "uid://bc760s8e75db1"
 
 [resource]
 script = ExtResource("1_v14cx")
-name = ""
-description = ""
-category = ""
-valid_tile_types = Array[String]([])
-options = Array[Dictionary]([])
+name = "Bandit Ambush"
+description = "A group of bandits halts the caravan and demands payment."
+category = "tile"
+valid_tile_types = Array[String](["plains", "forest"])
+trigger_script = ExtResource("2_jko2c")
+icon = SubResource("PlaceholderTexture2DArray_ot5i1")
+options = Array[ExtResource("1_h0dti")]([SubResource("Resource_slbgm"), SubResource("Resource_6lmrr")])
 metadata/_custom_type_script = "uid://d3ho0r7xb53i"

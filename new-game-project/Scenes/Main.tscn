@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://dpwvrpmexdr2q"]
+[gd_scene load_steps=2 format=3 uid="uid://dpwvrpmexdr2q"]
+
+[ext_resource type="PackedScene" uid="uid://iiley25f6kc5" path="res://Scenes/Brent.tscn" id="1_r150o"]
 
 [node name="Main" type="Node2D"]
+
+[node name="TileMapController" parent="." instance=ExtResource("1_r150o")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Popups" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

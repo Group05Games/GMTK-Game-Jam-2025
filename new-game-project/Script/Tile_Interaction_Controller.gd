@@ -5,7 +5,8 @@ var MousePress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	map.debug_mode = HexagonTileMapLayer.DebugModeFlags.TILES_COORDS
+	pass
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Mouse_1"):
@@ -17,8 +18,11 @@ func _physics_process(delta: float) -> void:
 		print(tile)
 		#print(GlobalSettings.TileDictionary.Bog.ID)
 		
+		var ev := EventManager.get_event_by_name("Bandit Ambush")
+		EventManager.show_event_popup(ev, tile)
+		
 		var search = str(tile)
 		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
-				print(GlobalSettings.TileDictionary[search])
+			print(GlobalSettings.TileDictionary[search])
 		else:
 			print("invalid tile")

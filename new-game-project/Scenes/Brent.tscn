@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cex7x7jjxohcf" path="res://icon.svg" id="1_5jne7"]
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_asxmm"]
-[ext_resource type="Script" uid="uid://cpxmer4hs15nw" path="res://Script/mesh_instance_2d.gd" id="2_7cirs"]
+[ext_resource type="Script" path="res://Script/mesh_instance_2d.gd" id="2_7cirs"]
 [ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Prefabs/Camera.tscn" id="2_feffm"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
