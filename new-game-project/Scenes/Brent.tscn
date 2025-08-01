@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://iiley25f6kc5"]
+[gd_scene load_steps=8 format=4 uid="uid://iiley25f6kc5"]
+
+[ext_resource type="Texture2D" uid="uid://cex7x7jjxohcf" path="res://icon.svg" id="1_5jne7"]
+[ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_asxmm"]
+[ext_resource type="Script" uid="uid://cpxmer4hs15nw" path="res://Script/mesh_instance_2d.gd" id="2_7cirs"]
+[ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Assets/Camera.tscn" id="2_feffm"]
+[ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
+[ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
+
+[sub_resource type="Curve2D" id="Curve2D_feffm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 127.609, 95.1891, 0, 0, 0, 0, 127.125, 97.3588, 0, 0, 0, 0, 129.222, 101.304, 0, 0, 0, 0, 131.804, 105.84, 0, 0, 0, 0, 132.288, 110.771, 0, 0, 0, 0, 133.741, 116.097)
+}
+point_count = 6
 
 [node name="Brent" type="Node2D"]
+script = ExtResource("1_asxmm")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_feffm")]
+position = Vector2(88, 78)
+scale = Vector2(1, 1)
+
+[node name="Path2D2" type="Path2D" parent="."]
+self_modulate = Color(0.694118, 0.709804, 0, 1)
+position = Vector2(-706.781, -500.604)
+scale = Vector2(6.19692, 5.06995)
+curve = SubResource("Curve2D_feffm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(133.741, 116.097)
+rotation = -0.942
+progress = 22.3854
+rotates = false
+loop = false
+
+[node name="Caravan" type="Sprite2D" parent="Path2D2/PathFollow2D"]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("1_5jne7")
+script = ExtResource("2_7cirs")
+
+[node name="Timer" type="Timer" parent="Path2D2/PathFollow2D/Caravan"]
+wait_time = 2.0
+one_shot = true
+
+[node name="HexagonTileMapLayer" type="TileMapLayer" parent="."]
+show_behind_parent = true
+tile_map_data = PackedByteArray("AAABAP7/AwAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAABwAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAPv/AwAAAAAAAAACAPr/AwAAAAAAAAACAPv/AwAAAAAAAAADAPz/AwAAAAAAAAACAPz/AwAAAAAAAAACAP7/AwAAAAAAAAABAP3/AwAAAAAAAAAAAP3/AwAAAAAAAAABAPz/AwAAAAAAAAACAP3/AwAAAAAAAAAAAP7/AwAAAAAAAAD///3/AwAAAAAAAAAAAPz/AwAAAAAAAAAAAPv/AwAAAAAAAAABAPr/AwAAAAAAAAAAAPr/AwAAAAAAAAD///7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAD+//v/AAAAAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAD///r/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAD9//n/AAAAAAAAAAD+//r/BwAAAAAAAAD9//v/AAAAAAAAAAD9//z/AAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD9//r/AAAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD7//3/AAAAAAAAAAD7////AAAAAAAAAAD9//3/AAAAAAAAAAD+//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD8/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAD7//n/AAAAAAAAAAD7//r/AAAAAAAAAAD7//v/AAAAAAAAAAD7//z/AAAAAAAAAAD7//7/AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAABAAMAAAAAAAAAAAACAPn/AAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAADAPv/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAA=")
+tile_set = ExtResource("3_tq7qs")
+script = ExtResource("4_asxmm")
+metadata/_custom_type_script = "uid://buj6ft1vvdf2f"
