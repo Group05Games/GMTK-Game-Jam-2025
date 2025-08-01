@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="New Game Project"
+run/main_scene="uid://iiley25f6kc5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +21,10 @@ GlobalEventBusController="*res://Script/GlobalEventBusController.gd"
 GlobalSignalBusController="*res://Script/GlobalSignalBusController.gd"
 GlobalSettings="*res://Script/GlobalSettings.gd"
 EventManager="*res://EventSystem/EventManager.gd"
+
+[dotnet]
+
+project/assembly_name="New Game Project"
 
 [editor_plugins]
 
