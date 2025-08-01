@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GlobalEventBusController="*res://Script/GlobalEventBusController.gd"
 GlobalSignalBusController="*res://Script/GlobalSignalBusController.gd"
 GlobalSettings="*res://Script/GlobalSettings.gd"
+EventManager="*res://EventSystem/EventManager.gd"
 
 [dotnet]
 
