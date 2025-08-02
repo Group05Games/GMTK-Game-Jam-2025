@@ -1,12 +1,10 @@
 extends Node
 
+enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
 var CityInventory : Inventory = Inventory.new()
-var temp : Inventory = Inventory.new()
 
 var CityState =  0
-
-enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
 ## Make sure the ID number of the Tile Dictionary matches the ID number of the TileSet.
 var TileDictionary : Dictionary = {
@@ -29,23 +27,27 @@ var MaxZoom : float = 2.0
 var MinZoom : float = 0.1
 
 func _ready():
-	temp.setItems(["Wood", "Gold", "Population"], [1, -1, 3])
+	CityInventory.initInv()
+	var temp : Inventory = Inventory.new()
+	temp.setItems([ResourceType.WOOD, ResourceType.GOLD, ResourceType.METAL], [1, -1, 3])
 	
-	print("Wood " + str(CityInventory.inventory["Wood"]))
-	print("Gold " + str(CityInventory.inventory["Gold"]))
-	CityInventory.addArray(["Wood", "Gold"], [2, 1])
+	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
+	CityInventory.addArray([ResourceType.WOOD, ResourceType.GOLD], [2, 1])
 	print()
-	print("Wood " + str(CityInventory.inventory["Wood"]))
-	print("Gold " + str(CityInventory.inventory["Gold"]))
-	CityInventory.addArray(["Wood"], [-2])
+	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
+	CityInventory.addArray([ResourceType.WOOD], [-2])
 	print()
-	print("Wood " + str(CityInventory.inventory["Wood"]))
-	print("Gold " + str(CityInventory.inventory["Gold"]))
-	#CityInventory.emptyInventory()
-	#print("Wood " + str(CityInventory.inventory["Wood"]))
-	#print("Gold " + str(CityInventory.inventory["Gold"]))
+	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
+	CityInventory.emptyInventory()
+	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
 	CityInventory.addInventory(temp.inventory)
 	print()
-	print("Wood " + str(CityInventory.inventory["Wood"]))
-	print("Gold " + str(CityInventory.inventory["Gold"]))
-	print("Pop " + str(CityInventory.inventory["Population"]))
+	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
+	print("Metal " + str(CityInventory.inventory[ResourceType.METAL]))
+	print()
+	print("Wheat: " + str(CityInventory.inventory[ResourceType.WHEAT]))

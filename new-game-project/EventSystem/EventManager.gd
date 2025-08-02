@@ -3,6 +3,7 @@ extends Node
 var all_events: Array[GameEvent] = []
 var events_by_name := {}  # String -> GameEvent
 var player_money = 500 # This should later be tied to real game state
+#var player_money = GlobalSettings.CityInventory.inventory[GlobalSettings.ResourceType.GOLD]
 
 @onready var popup_parent: Control = _get_popup_parent()
 @onready var camera: Camera2D = _get_camera()
