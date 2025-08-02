@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw2o1uuun6ifq"]
+
+[ext_resource type="Script" uid="uid://cecd2mp0lqs1s" path="res://Script/tile_information_display.gd" id="1_dapx6"]
+
+[node name="TileInformationDisplay" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -536.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dapx6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.711851
+anchor_top = -0.981132
+anchor_right = 3.99594
+anchor_bottom = 1.98113
+offset_left = 219.5
+offset_top = 260.0
+offset_right = -219.5
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="KillTimer" to="." method="killTimer"]
