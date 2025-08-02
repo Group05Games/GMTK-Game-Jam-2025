@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://iiley25f6kc5"]
+[gd_scene load_steps=9 format=4 uid="uid://iiley25f6kc5"]
 
 [ext_resource type="Texture2D" uid="uid://cex7x7jjxohcf" path="res://icon.svg" id="1_5jne7"]
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_asxmm"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Prefabs/Camera.tscn" id="2_feffm"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
-[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="5_kxsdv"]
 [ext_resource type="PackedScene" uid="uid://bw2o1uuun6ifq" path="res://Prefabs/tile_information_display.tscn" id="6_o68iu"]
 
 [sub_resource type="Curve2D" id="Curve2D_feffm"]
@@ -27,25 +26,6 @@ metadata/_custom_type_script = "uid://buj6ft1vvdf2f"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" parent="." instance=ExtResource("2_feffm")]
-position = Vector2(88, 78)
-zoom = Vector2(0.5, 0.5)
-editor_draw_limits = true
-
-[node name="MenuPanel" type="Panel" parent="Camera2D"]
-offset_left = -1148.0
-offset_top = -643.0
-offset_right = -248.0
-offset_bottom = -483.0
-theme = ExtResource("5_kxsdv")
-metadata/_edit_use_anchors_ = true
-
-[node name="LogPanel" type="Panel" parent="Camera2D"]
-offset_left = 908.0
-offset_top = -645.0
-offset_right = 1146.0
-offset_bottom = 5.0
-theme = ExtResource("5_kxsdv")
-metadata/_edit_use_anchors_ = true
 
 [node name="Path2D2" type="Path2D" parent="."]
 self_modulate = Color(0.694118, 0.709804, 0, 1)
