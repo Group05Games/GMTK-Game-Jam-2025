@@ -5,7 +5,7 @@ var MousePress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	map.debug_mode = HexagonTileMapLayer.DebugModeFlags.TILES_COORDS
+	#map.debug_mode = HexagonTileMapLayer.DebugModeFlags.TILES_COORDS
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		#print("Clicked " , MousePress , " and found: " , result)
 		
 		var tile = map.get_cell_source_id(map.cube_to_map(result))
-		print(tile)
+		#print(tile)
 		#print(GlobalSettings.TileDictionary.Bog.ID)
 		
 		var ev := EventManager.get_event_by_name("Bandit Ambush")
@@ -24,5 +24,24 @@ func _physics_process(delta: float) -> void:
 		var search = str(tile)
 		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
 			print(GlobalSettings.TileDictionary[search])
+		else:
+			print("invalid tile")
+	
+	if Input.is_action_just_pressed("Mouse_2"):
+		MousePress = get_global_mouse_position()
+		var result = map.local_to_cube(MousePress)
+		#print("Clicked " , MousePress , " and found: " , result)
+		
+		var tile = map.get_cell_source_id(map.cube_to_map(result))
+		#print(tile)
+		#print(GlobalSettings.TileDictionary.Bog.ID)
+		
+		var ev := EventManager.get_event_by_name("Bandit Ambush")
+		EventManager.show_event_popup(ev, tile)
+		
+		var search = str(tile)
+		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
+			#print(GlobalSettings.TileDictionary[search])
+			GlobalSignalBusController.SendMapInformation.emit(self, search)
 		else:
 			print("invalid tile")

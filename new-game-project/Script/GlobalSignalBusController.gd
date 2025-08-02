@@ -9,3 +9,7 @@ extends Node
 
 ## When calling the signal:
 ## emit_signal(Name_Of_Signal, Variables_To_Pass_X, Variables_To_Pass_Y)
+
+
+
+signal SendMapInformation(sender : String, tile_ID : int)
