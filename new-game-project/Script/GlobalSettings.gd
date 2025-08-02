@@ -24,9 +24,10 @@ var TileDictionary : Dictionary = {
 	"5" : {"Name" : "Mine", "Move Cost" : 1, "Resource" : ResourceType.METAL, "NeighborBonuses": {"4": 1, "6": 4, "3": -1}},
 	"6" : {"Name" : "Volcano", "Move Cost" : 10, "Resource" : ResourceType.NONE},
 	"7" : {"Name" : "City", "Move Cost" : 1, "Resource" : ResourceType.NONE},
-	"8" : {"Name" : "Town", "Move Cost" : 1, "Resource" : ResourceType.NONE},
-	"9" : {"Name" : "Sawmill", "Move Cost" : 1, "Resource" : ResourceType.WOOD, "NeighborBonuses": {"1": 1}},
-	"10": {"Name" : "Farm", "Move Cost": 1, "Resource": ResourceType.WHEAT, "NeighborBonuses": {"0": 1}}
+	"8" : {"Name" : "Barren", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"9" : {"Name" : "Town", "Move Cost" : 1, "Resource" : ResourceType.NONE},
+	"10" : {"Name" : "Sawmill", "Move Cost" : 1, "Resource" : ResourceType.WOOD, "NeighborBonuses": {"1": 1}},
+	"11": {"Name" : "Farm", "Move Cost": 1, "Resource": ResourceType.WHEAT, "NeighborBonuses": {"0": 1}}
 }
 
 var ScrollSpeed : float = 0.2
