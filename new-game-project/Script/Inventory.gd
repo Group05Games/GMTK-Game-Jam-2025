@@ -19,6 +19,15 @@ func initInvFromArray(values : Array):
 	for type in GlobalSettings.ResourceType.values():
 		inventory.set(type, 0)
 
+func convertToGold():
+	var gold : int = 0
+	
+	for key in inventory:
+		gold += inventory[key] * GlobalSettings.ResourceGoldValues[key]
+	
+	emptyInventory()
+	inventory[GlobalSettings.ResourceType.GOLD] = gold
+
 # Provide an Inventory dictionary, every item in the provided inventory will be added to this inventory.
 # @param inv -> Inventory
 func addInventory(inv : Dictionary):

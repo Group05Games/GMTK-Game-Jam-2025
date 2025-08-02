@@ -6,6 +6,14 @@ var CityInventory : Inventory = Inventory.new()
 
 var CityState =  0
 
+var ResourceGoldValues : Dictionary = {
+	ResourceType.NONE : 0,
+	ResourceType.WHEAT : 3,
+	ResourceType.METAL : 25,
+	ResourceType.WOOD : 5,
+	ResourceType.GOLD : 1,
+}
+
 ## Make sure the ID number of the Tile Dictionary matches the ID number of the TileSet.
 var TileDictionary : Dictionary = {
 	"0" : {"Name" : "Grasslands", "Move Cost" : 1, "Resource" : ResourceType.WHEAT},
@@ -41,9 +49,9 @@ func _ready():
 	print()
 	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
 	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
-	CityInventory.emptyInventory()
-	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
-	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
+	#CityInventory.emptyInventory()
+	#print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
+	#print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
 	CityInventory.addInventory(temp.inventory)
 	print()
 	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
@@ -51,3 +59,4 @@ func _ready():
 	print("Metal " + str(CityInventory.inventory[ResourceType.METAL]))
 	print()
 	print("Wheat: " + str(CityInventory.inventory[ResourceType.WHEAT]))
+	CityInventory.convertToGold()
