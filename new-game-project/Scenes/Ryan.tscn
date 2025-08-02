@@ -1,3 +1,28 @@
 [gd_scene format=3 uid="uid://dp3qc2csilenp"]
 
 [node name="Ryan" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.03573
+offset_top = -0.128171
+offset_right = 185.036
+offset_bottom = 172.872
+rotation = 0.0026678
+scale = Vector2(1.02498, 1.07963)
+pivot_offset = Vector2(-48.0617, -13.3302)
+tooltip_text = "Hello
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 743.0
+offset_right = 1340.0
+offset_bottom = 783.0
+
+[node name="Panel" type="Panel" parent="Control/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Hello
+"
