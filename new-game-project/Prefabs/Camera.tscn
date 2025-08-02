@@ -1,7 +1,130 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7kdwob6oncjc"]
+[gd_scene load_steps=4 format=3 uid="uid://b7kdwob6oncjc"]
 
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
+[ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
+[ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
 
 [node name="Camera2D" type="Camera2D"]
-scale = Vector2(1, 1)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_regp8")
+
+[node name="MenuPanel" type="Panel" parent="."]
+offset_left = -1148.0
+offset_top = -643.0
+offset_right = 152.0
+offset_bottom = -483.0
+theme = ExtResource("2_yp6pr")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuPanel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 9.0
+offset_right = 1278.0
+offset_bottom = 146.0
+theme = ExtResource("2_yp6pr")
+theme_override_constants/separation = 27
+
+[node name="Upgrades" type="Button" parent="MenuPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Upgrades"
+
+[node name="Stats" type="Button" parent="MenuPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Stats"
+
+[node name="Menu" type="Button" parent="MenuPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu"
+
+[node name="LogPanel" type="Panel" parent="."]
+offset_left = 908.0
+offset_top = -645.0
+offset_right = 1146.0
+offset_bottom = 5.0
+theme = ExtResource("2_yp6pr")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_yp6pr")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -1163.0
+offset_top = -659.0
+offset_right = 1170.0
+offset_bottom = 656.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpgradesPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1139.0
+offset_top = -442.0
+offset_right = -84.0
+offset_bottom = 109.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UpgradesPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.348815
+anchor_top = 0.0326679
+anchor_right = 1.88626
+anchor_bottom = 1.74773
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="StatsPanel"]
+layout_mode = 0
+anchor_left = -28.725
+anchor_top = -10.175
+anchor_right = -20.9
+anchor_bottom = 12.4
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsPanel/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_yp6pr")
+theme_override_constants/separation = 100
+
+[node name="Gold" type="Label" parent="StatsPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Gold : 0"
+
+[node name="Wheat" type="Label" parent="StatsPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Wheat : 0"
+
+[node name="Metal" type="Label" parent="StatsPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Metal : 0"
+
+[node name="Wood" type="Label" parent="StatsPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Wood : 0"
+
+[node name="CaravanTotal" type="Label" parent="StatsPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Caravan 0/0"
+
+[connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
+[connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]

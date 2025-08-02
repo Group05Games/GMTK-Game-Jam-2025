@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_gedxr"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="2_lgqbo"]
 
-[node name="TileMapController" type="Node2D" groups=["TileMap"]]
+[node name="TileMapController3" type="Node2D" groups=["TileMap"]]
 script = ExtResource("1_gedxr")
 
 [node name="HexagonTileMapLayer" type="TileMapLayer" parent="."]

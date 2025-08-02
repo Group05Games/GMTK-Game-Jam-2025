@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://muge8i3t54oq"]
+
+[ext_resource type="Script" uid="uid://dnnnreklevlh6" path="res://Script/pause_menu.gd" id="1_tuk1o"]
+[ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_wrvdy"]
+[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="3_n87o5"]
+[ext_resource type="Script" uid="uid://bn4418bjysxsc" path="res://Script/Volume_Slider.gd" id="3_wrvdy"]
+
+[node name="PauseMenu" type="Control" groups=["PauseMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tuk1o")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseDim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00434028
+anchor_top = -0.00154321
+anchor_right = 0.999132
+anchor_bottom = 0.993827
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.227451)
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenuContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+anchor_left = 0.334201
+anchor_top = 0.25463
+anchor_right = 0.678819
+anchor_bottom = 0.807099
+offset_top = -1.52588e-05
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuContainer"]
+layout_mode = 2
+theme = ExtResource("2_wrvdy")
+theme_override_constants/separation = 75
+
+[node name="MainMenu" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Resume" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="SoundMenuContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0998264
+anchor_top = 0.156636
+anchor_right = 0.900174
+anchor_bottom = 0.843364
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SoundMenuContainer"]
+layout_mode = 2
+theme = ExtResource("3_n87o5")
+theme_override_constants/separation = 17
+
+[node name="Master" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderMaster" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_wrvdy")
+
+[node name="Music" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderMusic" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_wrvdy")
+
+[node name="Sounds" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderSound" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_wrvdy")
+
+[node name="GoBack" type="Button" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go Back"
+
+[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="SoundMenuContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]

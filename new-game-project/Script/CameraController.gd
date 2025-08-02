@@ -1,8 +1,18 @@
 extends Camera2D
 
+@onready var upgrades: Button = $MenuPanel/HBoxContainer/Upgrades
+@onready var stats: Button = $MenuPanel/HBoxContainer/Stats
+@onready var menu: Button = $MenuPanel/HBoxContainer/Menu
+@onready var stats_panel: Control = $StatsPanel
+@onready var upgrades_panel: Control = $UpgradesPanel
+
+
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	#handle_zoom()
+	if Input.is_action_just_pressed("Escape"):
+		GlobalEventBusController.PauseMenu()
+		
 
 func handle_movement(delta: float) -> void:
 	var input_vector := Input.get_vector("Left", "Right", "Up", "Down")
@@ -29,3 +39,15 @@ func clamp_vector2(vec: Vector2, min_val: float, max_val: float) -> Vector2:
 		clamp(vec.x, min_val, max_val),
 		clamp(vec.y, min_val, max_val)
 	)
+
+
+func _on_menu_pressed() -> void:
+	GlobalEventBusController.PauseMenu()
+
+
+func _on_stats_pressed() -> void:
+	stats_panel.visible = !stats_panel.visible
+
+
+func _on_upgrades_pressed() -> void:
+	upgrades_panel.visible = !upgrades_panel.visible

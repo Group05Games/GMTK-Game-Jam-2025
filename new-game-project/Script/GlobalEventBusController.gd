@@ -1,11 +1,19 @@
 extends Node
 
+var paused = false
+@onready var pause_menu = get_tree().get_first_node_in_group("PauseMenu")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func PauseMenu():
+	if paused:
+		GlobalSettings.InMenu = false
+		pause_menu.pause_menu_container.visible = true
+		pause_menu.sound_menu_container.visible = false
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		GlobalSettings.InMenu = true
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	
+	paused = !paused
