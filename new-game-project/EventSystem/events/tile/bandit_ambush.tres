@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameEvent" load_steps=9 format=3 uid="uid://c13nwswljox86"]
 
-[ext_resource type="Script" uid="uid://bc760s8e75db1" path="res://EventSystem/OptionData.gd" id="1_h0dti"]
+[ext_resource type="Script" path="res://EventSystem/OptionData.gd" id="1_h0dti"]
 [ext_resource type="Script" uid="uid://d3ho0r7xb53i" path="res://EventSystem/GameEvent.gd" id="1_v14cx"]
 [ext_resource type="Script" uid="uid://df6sq78gvxths" path="res://EventSystem/effects/pay_bandits.gd" id="2_07al1"]
 [ext_resource type="Script" uid="uid://c2d47v14ehhbd" path="res://EventSystem/triggers/wealthy_player_trigger.gd" id="2_jko2c"]
