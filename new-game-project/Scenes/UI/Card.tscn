@@ -33,8 +33,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
 offset_top = -1.0
-offset_right = 1.0
-offset_bottom = -1.0
+offset_right = -1023.0
+offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jt28g")
@@ -44,9 +44,19 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 offset_right = 128.0
 offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
 position = Vector2(64, 96)
 sprite_frames = SubResource("SpriteFrames_c8xoj")
 autoplay = "default"
 frame_progress = 0.66313
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 57.0
+text = "Card Type
+"
+horizontal_alignment = 1
