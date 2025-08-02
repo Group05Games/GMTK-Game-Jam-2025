@@ -1,0 +1,141 @@
+[gd_scene load_steps=6 format=3 uid="uid://clsvi4r7521vx"]
+
+[ext_resource type="Script" uid="uid://duova4pchps62" path="res://Script/Main_Menu_Controller.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://bxcoa8qiwgsy4" path="res://Imports/All Roads Lead To Home.png" id="1_48xlc"]
+[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="2_1ehe0"]
+[ext_resource type="Script" uid="uid://bn4418bjysxsc" path="res://Script/Volume_Slider.gd" id="4_ce3w2"]
+[ext_resource type="Theme" uid="uid://ddwcownhfnpwi" path="res://Assets/Credits_Theme.tres" id="5_n45e2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -10
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_48xlc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00694444
+anchor_top = 0.479938
+anchor_right = 0.25
+anchor_bottom = 1.00772
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_1ehe0")
+theme_override_constants/separation = 15
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="SoundMenuContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0998264
+anchor_top = 0.156636
+anchor_right = 0.900174
+anchor_bottom = 0.843364
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="SoundMenuContainer"]
+z_index = -4
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SoundMenuContainer"]
+layout_mode = 2
+theme = ExtResource("2_1ehe0")
+theme_override_constants/separation = 17
+
+[node name="Master" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderMaster" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_ce3w2")
+bus_Name = "Master"
+
+[node name="Music" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderMusic" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_ce3w2")
+bus_Name = "Music"
+
+[node name="Sounds" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSliderSound" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_ce3w2")
+bus_Name = "Sounds"
+
+[node name="GoBack" type="Button" parent="SoundMenuContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Go Back"
+
+[node name="Credits" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25217
+anchor_top = 0.237654
+anchor_right = 0.74783
+anchor_bottom = 0.762346
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n45e2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_right = 573.0
+offset_bottom = 336.0
+text = "Art
+Person 1
+Person 2
+Person 3
+Person 4"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="SoundMenuContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]

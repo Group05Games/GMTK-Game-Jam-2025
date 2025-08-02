@@ -82,6 +82,7 @@ horizontal_alignment = 1
 [node name="VolumeSliderMaster" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("3_wrvdy")
+bus_Name = "Master"
 
 [node name="Music" type="Label" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
@@ -91,6 +92,7 @@ horizontal_alignment = 1
 [node name="VolumeSliderMusic" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("3_wrvdy")
+bus_Name = "Music"
 
 [node name="Sounds" type="Label" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
@@ -100,6 +102,7 @@ horizontal_alignment = 1
 [node name="VolumeSliderSound" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("3_wrvdy")
+bus_Name = "Sound"
 
 [node name="GoBack" type="Button" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2

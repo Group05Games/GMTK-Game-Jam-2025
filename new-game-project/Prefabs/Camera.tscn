@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7kdwob6oncjc"]
+[gd_scene load_steps=6 format=3 uid="uid://b7kdwob6oncjc"]
 
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
 [ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
 [ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
+[ext_resource type="Script" uid="uid://d0xdcg0uqxfo2" path="res://Script/Stats_Controller.gd" id="4_twoia"]
+[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="5_s857k"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
@@ -84,11 +86,11 @@ anchor_bottom = 1.74773
 metadata/_edit_use_anchors_ = true
 
 [node name="StatsPanel" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_twoia")
 
 [node name="Panel" type="Panel" parent="StatsPanel"]
 layout_mode = 0
@@ -125,6 +127,16 @@ text = "Wood : 0"
 layout_mode = 2
 text = "Caravan 0/0"
 
+[node name="GiveMeRandomResource" type="Button" parent="StatsPanel"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 423.0
+offset_right = 1079.0
+offset_bottom = 574.0
+theme = ExtResource("5_s857k")
+text = "Random Item Get"
+
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="StatsPanel/GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]

@@ -9,25 +9,25 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Mouse_1"):
-		MousePress = get_global_mouse_position()
-		var result = map.local_to_cube(MousePress)
+	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true:
+		MousePress = get_global_mouse_position() #Where is mouse cursor
+		var result = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
 		#print("Clicked " , MousePress , " and found: " , result)
 		
-		var tile = map.get_cell_source_id(map.cube_to_map(result))
+		var tile = map.get_cell_source_id(map.cube_to_map(result)) #Covert Hex Space into 2D TileMap Space
 		#print(tile)
 		#print(GlobalSettings.TileDictionary.Bog.ID)
 		
 		var ev := EventManager.get_event_by_name("Bandit Ambush")
 		EventManager.show_event_popup(ev, tile)
 		
-		var search = str(tile)
-		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
+		var search = str(tile) #Convert Tile int into string
+		if tile != -1 && GlobalSettings.TileDictionary[search] != null: #Check if valid tile or null
 			print(GlobalSettings.TileDictionary[search])
 		else:
 			print("invalid tile")
 	
-	if Input.is_action_just_pressed("Mouse_2"):
+	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true:
 		MousePress = get_global_mouse_position()
 		var result = map.local_to_cube(MousePress)
 		#print("Clicked " , MousePress , " and found: " , result)

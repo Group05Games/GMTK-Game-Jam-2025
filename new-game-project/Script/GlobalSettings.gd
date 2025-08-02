@@ -35,6 +35,7 @@ var MoveSpeed : float = 1000
 var MaxZoom : float = 2.0
 var MinZoom : float = 0.1
 var InMenu : bool = false
+var bus_index: int
 
 func _ready():
 	CityInventory.initInv()
@@ -44,6 +45,7 @@ func _ready():
 	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
 	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
 	CityInventory.addArray([ResourceType.WOOD, ResourceType.GOLD], [2, 1])
+	CityInventory.addArray([ResourceType.WHEAT, ResourceType.GOLD], [100, 1])
 	print()
 	print("Wood " + str(CityInventory.inventory[ResourceType.WOOD]))
 	print("Gold " + str(CityInventory.inventory[ResourceType.GOLD]))
@@ -61,4 +63,4 @@ func _ready():
 	print("Metal " + str(CityInventory.inventory[ResourceType.METAL]))
 	print()
 	print("Wheat: " + str(CityInventory.inventory[ResourceType.WHEAT]))
-	CityInventory.convertToGold()
+	#CityInventory.convertToGold()

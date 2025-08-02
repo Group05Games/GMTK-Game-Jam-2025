@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dpwvrpmexdr2q"]
+[gd_scene load_steps=10 format=4 uid="uid://dpwvrpmexdr2q"]
 
 [ext_resource type="Texture2D" uid="uid://cex7x7jjxohcf" path="res://icon.svg" id="1_5jne7"]
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_asxmm"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
 [ext_resource type="PackedScene" uid="uid://bw2o1uuun6ifq" path="res://Prefabs/tile_information_display.tscn" id="7_jw32o"]
+[ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="8_50glp"]
 
 [sub_resource type="Curve2D" id="Curve2D_feffm"]
 _data = {
@@ -51,3 +52,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TileInformationDisplay" parent="." instance=ExtResource("7_jw32o")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_50glp")]
+visible = false

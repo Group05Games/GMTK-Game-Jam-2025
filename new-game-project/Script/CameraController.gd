@@ -5,7 +5,7 @@ extends Camera2D
 @onready var menu: Button = $MenuPanel/HBoxContainer/Menu
 @onready var stats_panel: Control = $StatsPanel
 @onready var upgrades_panel: Control = $UpgradesPanel
-
+var LogShow
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
@@ -51,3 +51,14 @@ func _on_stats_pressed() -> void:
 
 func _on_upgrades_pressed() -> void:
 	upgrades_panel.visible = !upgrades_panel.visible
+
+
+func _on_give_me_random_resource_pressed() -> void:
+	var rng = randi_range(1,4)
+	
+	#GlobalSettings.CityInventory.addArray([GlobalSettings.ResourceType.vrng, GlobalSettings.ResourceType[str(rng)]], [2, 1])
+	
+
+
+func _on_log_pressed() -> void:
+	pass # Replace with function body.

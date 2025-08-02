@@ -1,6 +1,6 @@
 extends Control
 
-@export var Main_Menu : PackedScene
+@export var Main_Menu : PackedScene = preload("res://Scenes/main_menu.tscn")
 @onready var pause_menu_container: MarginContainer = $PauseMenuContainer
 @onready var sound_menu_container: MarginContainer = $SoundMenuContainer
 
