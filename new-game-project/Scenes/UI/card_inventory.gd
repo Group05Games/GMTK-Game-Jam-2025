@@ -23,7 +23,6 @@ func _ready():
 	for i in range(10):
 		cardsInventory[str(i)] = 0
 	
-	self.mouse_entered.connect(input_passforward)
 	open_menu_hover.mouse_entered.connect(on_open_mouse_entered)
 	hold_open_menu_hover.mouse_exited.connect(on_hold_open_mouse_exited)
 	
@@ -40,11 +39,6 @@ func _ready():
 	add_card("1", 1)
 	add_card("3", 1)
 	add_card("1", 1)
-
-func input_passforward(event: InputEvent):
-	print("GOT EVENT")
-	container._on_parent_click(event)
-	deselect_card_button._on_parent_click(event)
 
 # Add or remove cards to the inventory
 func add_card(type: String, amount: int) -> void:
