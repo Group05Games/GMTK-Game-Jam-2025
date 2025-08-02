@@ -18,6 +18,18 @@ grow_vertical = 0
 script = ExtResource("1_sb24l")
 metadata/_edit_use_anchors_ = true
 
+[node name="HoldOpenMenuHover" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0008881
+anchor_top = -0.0416666
+anchor_right = 0.994672
+anchor_bottom = 0.994789
+mouse_filter = 1
+disabled = true
+metadata/_edit_use_anchors_ = true
+
 [node name="MenuPanel" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.0044405
@@ -44,18 +56,6 @@ anchor_right = 0.995245
 anchor_bottom = 0.928412
 mouse_filter = 1
 theme = SubResource("Theme_xtco3")
-metadata/_edit_use_anchors_ = true
-
-[node name="HoldOpenMenuHover" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0008881
-anchor_top = -0.0416666
-anchor_right = 0.994672
-anchor_bottom = 0.994789
-mouse_filter = 1
-disabled = true
 metadata/_edit_use_anchors_ = true
 
 [node name="OpenMenuHover" type="Button" parent="."]
