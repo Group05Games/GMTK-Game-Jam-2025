@@ -19,7 +19,7 @@ func _ready() -> void:
 	EventManager.request_tile_event_for_cube(map, result, tile_info, self)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true:
+	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true && !GlobalSettings.InPathPlacementMode:
 		MousePress = get_global_mouse_position() #Where is mouse cursor
 		var result = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
 		var clicked_tile_position = map.cube_to_map(result)
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		handle_tile_placements(search, clicked_tile_position)
 		
 	
-	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true:
+	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && !GlobalSettings.InPathPlacementMode:
 		MousePress = get_global_mouse_position()
 		var result = map.local_to_cube(MousePress)
 		#print("Clicked " , MousePress , " and found: " , result)
@@ -51,6 +51,40 @@ func _physics_process(delta: float) -> void:
 			GlobalSignalBusController.SendMapInformation.emit(self, search)
 		else:
 			print("invalid tile")
+		
+	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
+		MousePress = get_global_mouse_position() #Where is mouse cursor
+		var result : Vector3i = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
+		var initialPoint : Vector3i
+		if GlobalSettings.caravanPathBuiler == []: 
+			initialPoint = map.local_to_cube(Vector2(0,0))
+		else:
+			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
+		
+		if result in map.cube_neighbors(initialPoint):
+			if result not in GlobalSettings.caravanPathBuiler:
+				print("adding new space to path" + str(result))
+			else:
+				#Find result in path builder
+				
+				#Remove all elements from result till the end of the path
+				pass
+		
+		var tile = map.get_cell_source_id(map.cube_to_map(result)) #Covert Hex Space into 2D TileMap Space
+		#print(tile)
+		#print(GlobalSettings.TileDictionary.Bog.ID)
+		
+		var search = str(tile)
+		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
+			var tile_def = GlobalSettings.TileDictionary[search]
+			print(tile_def)
+
+		else:
+			print("invalid tile")
+	
+	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
+		GlobalSettings.set_in_path_placement_mode(false)
+		GlobalSettings.caravanPathBuiler = []
 
 # Handle tile placements
 func handle_tile_placements(clicked_tile_id, clicked_tile_position) -> void:

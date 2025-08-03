@@ -9,6 +9,7 @@ class_name Caravan
 
 var CaravanInventory : Inventory = Inventory.new()
 var isActive : bool = false
+var pathCurve : Curve2D = null
 
 func _ready():
 	CaravanInventory.initInv()
@@ -23,6 +24,7 @@ func depositAsGold():
 	CaravanInventory.emptyInventory()
 
 func definePath():
+	#Tile_Interaction_Controller
 	#map.cube_neighbors()
 	#While active should:
 	#Take user left clicks on neighboring nodes
