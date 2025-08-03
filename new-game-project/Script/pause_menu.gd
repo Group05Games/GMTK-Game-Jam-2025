@@ -5,7 +5,8 @@ extends Control
 @onready var sound_menu_container: MarginContainer = $SoundMenuContainer
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_packed(Main_Menu)
+	GlobalEventBusController.PauseMenu()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 
 func _on_options_pressed() -> void:

@@ -5,7 +5,9 @@ extends Camera2D
 @onready var menu: Button = $MenuPanel/HBoxContainer/Menu
 @onready var stats_panel: Control = $StatsPanel
 @onready var upgrades_panel: Control = $UpgradesPanel
-var LogShow
+@onready var log_panel: Panel = $LogPanel
+
+var LogShow : bool = true
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
@@ -16,7 +18,9 @@ func _physics_process(delta: float) -> void:
 
 func handle_movement(delta: float) -> void:
 	var input_vector := Input.get_vector("Left", "Right", "Up", "Down")
-	if input_vector != Vector2.ZERO:
+	if input_vector != Vector2.ZERO && Input.is_action_pressed("Shift"):
+		self.global_position += input_vector * GlobalSettings.MoveSpeed * 2 * delta
+	elif input_vector != Vector2.ZERO: 
 		self.global_position += input_vector * GlobalSettings.MoveSpeed * delta
 
 func handle_zoom() -> void:
@@ -58,7 +62,11 @@ func _on_give_me_random_resource_pressed() -> void:
 	
 	#GlobalSettings.CityInventory.addArray([GlobalSettings.ResourceType.vrng, GlobalSettings.ResourceType[str(rng)]], [2, 1])
 	
-
-
 func _on_log_pressed() -> void:
-	pass # Replace with function body.
+	if LogShow == true:
+		log_panel.position = lerp(log_panel.position, log_panel.position - Vector2(0, 750), .8)
+		log_panel.get_child(0).text = "Show"
+	else:
+		log_panel.position = lerp(log_panel.position, log_panel.position + Vector2(0, 750), .8)
+		log_panel.get_child(0).text = "Hide"
+	LogShow = !LogShow
