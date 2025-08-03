@@ -8,17 +8,17 @@ var MousePress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var result = map.local_to_cube(Vector2(0.0, -64.0))
-	var tile = map.get_cell_source_id(map.cube_to_map(result))
-	var tile_def = GlobalSettings.TileDictionary[str(tile)]
-	
-	var tile_info = {
-		"tile_id": tile,
-		"tile_type": tile_def.Name,
-		"tile_def": tile_def
-	}
-	
-	EventManager.request_tile_event_for_cube(map, result, tile_info, self)
+	#var result = map.local_to_cube(Vector2(0.0, -64.0))
+	#var tile = map.get_cell_source_id(map.cube_to_map(result))
+	#var tile_def = GlobalSettings.TileDictionary[str(tile)]
+	#
+	#var tile_info = {
+		#"tile_id": tile,
+		#"tile_type": tile_def.Name,
+		#"tile_def": tile_def
+	#}
+	#
+	#EventManager.request_tile_event_for_cube(map, result, tile_info, self)
 	caravan_holder.position = map.cube_to_local(Vector3(0,0,0))
 
 func _physics_process(delta: float) -> void:
