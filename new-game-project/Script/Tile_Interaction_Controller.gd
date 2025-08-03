@@ -82,6 +82,8 @@ func _physics_process(delta: float) -> void:
 					GlobalSettings.Caravan2.pathCurve = curve
 				if GlobalSettings.caravanIndex == 3:
 					GlobalSettings.Caravan3.pathCurve = curve
+				
+				GlobalSettings.caravanIndex = 0
 			else:
 				#Not yet in our path, add it if we have enough moves
 				if result not in GlobalSettings.caravanPathBuiler:
