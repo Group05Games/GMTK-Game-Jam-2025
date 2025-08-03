@@ -48,6 +48,31 @@ var InTilePlacementMode = false
 var bus_index: int
 var day : int
 
+# Custom cursors!
+var tile_placement_pointer = load("res://Assets/BuildTilePointer.png")
+var path_planning_pointer = load("res://Assets/PathPlannerPointer.png")
+var default_pointer = load("res://Assets/DefaultPointer.png")
+
+# Expects you to not be in any other modes
+func set_in_tile_placement_mode(in_mode: bool):
+	if(in_mode == self.InTilePlacementMode):
+		return
+	self.InTilePlacementMode = in_mode
+	if(in_mode):
+		Input.set_custom_mouse_cursor(tile_placement_pointer, Input.CURSOR_ARROW, Vector2(16, 16))
+	else:
+		Input.set_custom_mouse_cursor(default_pointer, Input.CURSOR_ARROW, Vector2(12, 12))
+
+# Expects you to not be in any other modes
+func set_in_path_placement_mode(in_mode: bool):
+	if(in_mode == self.InPathPlacementMode):
+		return
+	self.InPathPlacementMode = in_mode
+	if(in_mode):
+		Input.set_custom_mouse_cursor(path_planning_pointer, Input.CURSOR_ARROW, Vector2(16, 28))
+	else:
+		Input.set_custom_mouse_cursor(default_pointer, Input.CURSOR_ARROW, Vector2(12, 12))
+
 func _ready():
 	CityInventory.initInv()
 	var temp : Inventory = Inventory.new()
