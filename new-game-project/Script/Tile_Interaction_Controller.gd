@@ -18,12 +18,19 @@ func _physics_process(delta: float) -> void:
 		#print(tile)
 		#print(GlobalSettings.TileDictionary.Bog.ID)
 		
-		var ev := EventManager.get_event_by_name("Bandit Ambush")
-		EventManager.show_event_popup(ev, tile)
+		var search = str(tile)
+		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
+			var tile_def = GlobalSettings.TileDictionary[search]
+			print(tile_def)
+			
+			var tile_info = {
+				"tile_id": tile,
+				"tile_type": tile_def.Name,
+				"tile_def": tile_def
+			}
+			
+			EventManager.request_tile_event_for_cube(map, result, tile_info, self)
 		
-		var search = str(tile) #Convert Tile int into string
-		if tile != -1 && GlobalSettings.TileDictionary[search] != null: #Check if valid tile or null
-			print(GlobalSettings.TileDictionary[search])
 		else:
 			print("invalid tile")
 	
@@ -35,9 +42,6 @@ func _physics_process(delta: float) -> void:
 		var tile = map.get_cell_source_id(map.cube_to_map(result))
 		#print(tile)
 		#print(GlobalSettings.TileDictionary.Bog.ID)
-		
-		var ev := EventManager.get_event_by_name("Bandit Ambush")
-		EventManager.show_event_popup(ev, tile)
 		
 		var search = str(tile)
 		if tile != -1 && GlobalSettings.TileDictionary[search] != null:

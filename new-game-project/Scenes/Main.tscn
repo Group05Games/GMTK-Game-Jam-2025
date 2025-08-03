@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Prefabs/Camera.tscn" id="2_feffm"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
-[ext_resource type="PackedScene" uid="uid://d2fmv65w1hmrl" path="res://Prefabs/Caravan.tscn" id="5_v1gob"]
+[ext_resource type="PackedScene" path="res://Prefabs/Caravan.tscn" id="5_v1gob"]
 [ext_resource type="PackedScene" uid="uid://bw2o1uuun6ifq" path="res://Prefabs/tile_information_display.tscn" id="7_jw32o"]
 
 [node name="TileMapController" type="Node2D"]
