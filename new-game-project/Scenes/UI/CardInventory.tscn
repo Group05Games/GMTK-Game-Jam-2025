@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv6uhffrlkvbr"]
+
+[ext_resource type="Script" uid="uid://3gk4tqhim4hh" path="res://Scenes/UI/card_inventory.gd" id="1_sb24l"]
+[ext_resource type="StyleBox" uid="uid://blqm8dsm528q1" path="res://Scenes/UI/DeselectStyle.tres" id="2_sb24l"]
+
+[sub_resource type="Theme" id="Theme_xtco3"]
+Button/styles/focus = ExtResource("2_sb24l")
+Button/styles/normal = ExtResource("2_sb24l")
+
+[node name="CardSelectMenu" type="Control"]
+layout_mode = 3
+anchor_left = 0.0130208
+anchor_top = 0.679012
+anchor_right = 0.990451
+anchor_bottom = 0.975309
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_sb24l")
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuPanel" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.0044405
+anchor_right = 0.992008
+anchor_bottom = 0.979164
+metadata/_edit_use_anchors_ = true
+
+[node name="CardContainer" type="HBoxContainer" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.944938
+anchor_bottom = 0.999998
+offset_right = -0.000366211
+offset_bottom = 4.00044
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DeselectButton" type="Button" parent="MenuPanel"]
+layout_mode = 2
+anchor_left = 0.960609
+anchor_top = 0.0638309
+anchor_right = 0.995245
+anchor_bottom = 0.928412
+mouse_filter = 1
+theme = SubResource("Theme_xtco3")
+metadata/_edit_use_anchors_ = true
+
+[node name="HoldOpenMenuHover" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0008881
+anchor_top = -0.0416666
+anchor_right = 0.994672
+anchor_bottom = 0.994789
+mouse_filter = 1
+disabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="OpenMenuHover" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0017762
+anchor_top = 0.71354
+anchor_right = 0.998224
+anchor_bottom = 0.999998
+offset_top = -3.05176e-05
+offset_bottom = -3.05176e-05
+mouse_filter = 1
+disabled = true
+metadata/_edit_use_anchors_ = true
