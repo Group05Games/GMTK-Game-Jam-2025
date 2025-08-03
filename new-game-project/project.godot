@@ -44,6 +44,7 @@ enabled=PackedStringArray("res://addons/hexagon_tilemaplayer/plugin.cfg")
 TileMap="TileMap Goes Here"
 PauseMenu=""
 WorldTimer=""
+UpgradeLine=""
 
 [input]
 

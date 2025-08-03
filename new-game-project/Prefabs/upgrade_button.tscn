@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw6jo4mssfmxm"]
+[gd_scene load_steps=5 format=3 uid="uid://dw6jo4mssfmxm"]
 
 [ext_resource type="Texture2D" uid="uid://d10bggnhrcdd6" path="res://Imports/Illustration2.png" id="1_kkad0"]
 [ext_resource type="Script" uid="uid://dkip1yjcjisrv" path="res://Script/upgrade_button.gd" id="2_itowg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkad0"]
+bg_color = Color(1, 0.340402, 0.301205, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itowg"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="UpgradeButton" type="TextureButton"]
 anchors_preset = -1
@@ -17,6 +23,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_itowg")
 maxLevel = 1
+GoldCost = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
@@ -29,16 +36,48 @@ anchor_right = 1.08065
 anchor_bottom = 1.09865
 offset_bottom = -1.52588e-05
 
+[node name="HoverHighlight" type="Panel" parent="."]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.11
+anchor_top = -0.146
+anchor_right = 1.08065
+anchor_bottom = 1.09865
+offset_left = 1.26004
+offset_top = 4.31599
+offset_right = 13.6117
+offset_bottom = 9.5972
+theme_override_styles/panel = SubResource("StyleBoxFlat_kkad0")
+
+[node name="PurchaseHighLight" type="Panel" parent="."]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.11
+anchor_top = -0.146
+anchor_right = 1.08065
+anchor_bottom = 1.09865
+offset_left = 1.26004
+offset_top = 4.31599
+offset_right = 13.6117
+offset_bottom = 9.5972
+theme_override_styles/panel = SubResource("StyleBoxFlat_itowg")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.0481927
+anchor_top = -0.0753425
+anchor_right = 1.07831
+anchor_bottom = 1.10274
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Upgrade Number" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -48,10 +87,20 @@ text = "0/1"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Cost" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "5g"
+
+[node name="Line2D" type="Line2D" parent="." groups=["UpgradeLine"]]
 top_level = true
 z_index = -1
 width = 6.0
 default_color = Color(0.351563, 0.351563, 0.351563, 1)
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

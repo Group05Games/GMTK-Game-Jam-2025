@@ -2,21 +2,33 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyjub"]
 bg_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcw8r"]
-bg_color = Color(0.790721, 0.446457, 0.821117, 1)
+bg_color = Color(0.995269, 0.879697, 0.793115, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0.98369, 0.394476, 0.586557, 0.6)
-shadow_size = 2
-shadow_offset = Vector2(3.815, 0.35)
+shadow_color = Color(0.514097, 0.894215, 0.965751, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(0.92, 0.175)
 
 [resource]
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 4
+ProgressBar/font_sizes/font_size = 32
 ProgressBar/styles/background = SubResource("StyleBoxFlat_lyjub")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xcw8r")

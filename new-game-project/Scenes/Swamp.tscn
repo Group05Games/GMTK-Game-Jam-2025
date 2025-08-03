@@ -1,17 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://7m1saai4fy16"]
+[gd_scene load_steps=5 format=4 uid="uid://7m1saai4fy16"]
 
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_hxtvs"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="2_68og5"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="3_iymn6"]
 [ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Prefabs/Camera.tscn" id="4_u52gf"]
-[ext_resource type="Texture2D" uid="uid://cex7x7jjxohcf" path="res://icon.svg" id="5_x1i7e"]
-[ext_resource type="Script" path="res://Script/mesh_instance_2d.gd" id="6_ulfop"]
-
-[sub_resource type="Curve2D" id="Curve2D_feffm"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 127.609, 95.1891, 0, 0, 0, 0, 127.125, 97.3588, 0, 0, 0, 0, 129.222, 101.304, 0, 0, 0, 0, 131.804, 105.84, 0, 0, 0, 0, 132.288, 110.771, 0, 0, 0, 0, 133.741, 116.097)
-}
-point_count = 6
 
 [node name="TileMapController" type="Node2D"]
 script = ExtResource("1_hxtvs")
@@ -25,25 +17,3 @@ metadata/_custom_type_script = "uid://buj6ft1vvdf2f"
 
 [node name="Camera2D" parent="." instance=ExtResource("4_u52gf")]
 position = Vector2(88, 78)
-
-[node name="Path2D2" type="Path2D" parent="."]
-self_modulate = Color(0.694118, 0.709804, 0, 1)
-position = Vector2(-706.781, -500.604)
-scale = Vector2(6.19692, 5.06995)
-curve = SubResource("Curve2D_feffm")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(133.741, 116.097)
-rotation = -0.942
-progress = 22.3854
-rotates = false
-loop = false
-
-[node name="Caravan" type="Sprite2D" parent="Path2D2/PathFollow2D"]
-scale = Vector2(0.055, 0.055)
-texture = ExtResource("5_x1i7e")
-script = ExtResource("6_ulfop")
-
-[node name="Timer" type="Timer" parent="Path2D2/PathFollow2D/Caravan"]
-wait_time = 2.0
-one_shot = true

@@ -50,6 +50,15 @@ var InPathPlacementMode = false
 var InTilePlacementMode = false
 var bus_index: int
 var day : int
+var caravanMoveLimit : int = 5
+var caravanCapacity : int = 1
+var caravanInUse : int = 1
+var UpkeepCost : int = 0
+
+var Upgrades : Dictionary = {
+	"0" : "Capacity",
+	"1" : "MovePlusFive"
+}
 
 # Custom cursors!
 var tile_placement_pointer = load("res://Assets/BuildTilePointer.png")
@@ -108,4 +117,4 @@ func _ready():
 	print("Metal " + str(CityInventory.inventory[ResourceType.METAL]))
 	print()
 	print("Wheat: " + str(CityInventory.inventory[ResourceType.WHEAT]))
-	#CityInventory.convertToGold()
+	CityInventory.convertToGold()

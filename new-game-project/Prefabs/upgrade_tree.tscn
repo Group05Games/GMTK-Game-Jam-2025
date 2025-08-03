@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwjmbtbdqohtp"]
+[gd_scene load_steps=4 format=3 uid="uid://dwjmbtbdqohtp"]
 
 [ext_resource type="PackedScene" uid="uid://dw6jo4mssfmxm" path="res://Prefabs/upgrade_button.tscn" id="1_j5xvv"]
+[ext_resource type="Texture2D" uid="uid://ctp35v0li4l6o" path="res://Imports/Chest.png" id="2_32hl4"]
+[ext_resource type="Texture2D" uid="uid://urk7bmdx03js" path="res://Imports/Plushex.png" id="3_aqp07"]
 
 [node name="UpgradeTree" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -399.0
+offset_top = -276.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -22,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeButton" parent="." instance=ExtResource("1_j5xvv")]
+[node name="Cart Movement Up" parent="." instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = 0.434896
 anchor_top = 0.771605
@@ -30,8 +33,10 @@ anchor_right = 0.570313
 anchor_bottom = 0.978395
 grow_horizontal = 1
 grow_vertical = 1
+GoldCost = 15
+image = ExtResource("2_32hl4")
 
-[node name="UpgradeButton2" parent="UpgradeButton" instance=ExtResource("1_j5xvv")]
+[node name="UpgradeButton2" parent="Cart Movement Up" instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = 1.57051
 anchor_top = -1.4403
@@ -40,8 +45,10 @@ anchor_bottom = -0.335821
 grow_horizontal = 1
 grow_vertical = 1
 disabled = true
+GoldCost = 50
+image = ExtResource("2_32hl4")
 
-[node name="UpgradeButton4" parent="UpgradeButton/UpgradeButton2" instance=ExtResource("1_j5xvv")]
+[node name="UpgradeButton4" parent="Cart Movement Up/UpgradeButton2" instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = 1.05769
 anchor_top = -1.60811
@@ -50,8 +57,11 @@ anchor_bottom = -0.635135
 grow_horizontal = 1
 grow_vertical = 1
 disabled = true
+ID = 1
+GoldCost = 100
+image = ExtResource("3_aqp07")
 
-[node name="UpgradeButton5" parent="UpgradeButton/UpgradeButton2" instance=ExtResource("1_j5xvv")]
+[node name="UpgradeButton5" parent="Cart Movement Up/UpgradeButton2" instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = -0.788462
 anchor_top = -1.60811
@@ -60,8 +70,10 @@ anchor_bottom = -0.635135
 grow_horizontal = 1
 grow_vertical = 1
 disabled = true
+GoldCost = 200
+image = ExtResource("2_32hl4")
 
-[node name="UpgradeButton3" parent="UpgradeButton" instance=ExtResource("1_j5xvv")]
+[node name="UpgradeButton3" parent="Cart Movement Up" instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = -1.66026
 anchor_top = -1.46269
@@ -70,8 +82,11 @@ anchor_bottom = -0.358209
 grow_horizontal = 1
 grow_vertical = 1
 disabled = true
+ID = 1
+GoldCost = 50
+image = ExtResource("3_aqp07")
 
-[node name="UpgradeButton4" parent="UpgradeButton/UpgradeButton3" instance=ExtResource("1_j5xvv")]
+[node name="UpgradeButton4" parent="Cart Movement Up/UpgradeButton3" instance=ExtResource("1_j5xvv")]
 layout_mode = 1
 anchor_left = 0.025641
 anchor_top = -1.58108
@@ -80,3 +95,6 @@ anchor_bottom = -0.554054
 grow_horizontal = 1
 grow_vertical = 1
 disabled = true
+ID = 1
+GoldCost = 100
+image = ExtResource("3_aqp07")
