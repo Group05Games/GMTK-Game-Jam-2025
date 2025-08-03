@@ -6,6 +6,7 @@ extends Camera2D
 @onready var stats_panel: Control = $StatsPanel
 @onready var upgrades_panel: Control = $UpgradesPanel
 @onready var log_panel: Panel = $LogPanel
+@onready var path_select_panel = $PathSelectPanel
 
 var LogShow : bool = true
 
@@ -70,3 +71,16 @@ func _on_log_pressed() -> void:
 		log_panel.position = lerp(log_panel.position, log_panel.position + Vector2(0, 750), .8)
 		log_panel.get_child(0).text = "Hide"
 	LogShow = !LogShow
+
+
+func _on_place_paths_pressed():
+	path_select_panel.visible = !path_select_panel.visible
+
+func _on_path_1_pressed():
+	pass # Replace with function body.
+
+func _on_path_2_pressed():
+	pass # Replace with function body.
+
+func _on_path_3_pressed():
+	pass # Replace with function body.
