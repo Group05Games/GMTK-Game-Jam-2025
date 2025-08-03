@@ -11,7 +11,10 @@ const card_animations = [
 	"card_volcano",
 	"card_city",
 	"",
-	"card_city"
+	"card_city",
+	"",
+	"card_farm",
+	""
 ]
 
 func _ready():
