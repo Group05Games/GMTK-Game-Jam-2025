@@ -46,6 +46,10 @@ func _on_pressed() -> void:
 		for skill in skills:
 			if skill is SkillNode and level == maxLevel:
 				skill.disabled = false
+	else:
+		hover_highlight.scale += Vector2(.3, .3)
+		await get_tree().create_timer(1).timeout
+		hover_highlight.scale -= Vector2(.3, .3)
 
 
 func _on_mouse_entered() -> void:

@@ -54,8 +54,8 @@ var bus_index: int
 var day : int
 var caravanMoveLimit : int = 5
 var caravanCapacity : int = 1
-var caravanInUse : int = 1
-var UpkeepCost : int = 0
+var caravanInUse : int = 0
+var UpkeepCost : int = 5
 
 var Upgrades : Dictionary = {
 	"0" : "Capacity",

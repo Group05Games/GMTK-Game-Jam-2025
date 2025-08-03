@@ -6,7 +6,6 @@ var MousePress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	var result = map.local_to_cube(Vector2(0.0, -64.0))
 	var tile = map.get_cell_source_id(map.cube_to_map(result))
 	var tile_def = GlobalSettings.TileDictionary[str(tile)]

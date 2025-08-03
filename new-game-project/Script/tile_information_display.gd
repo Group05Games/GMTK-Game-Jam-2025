@@ -34,18 +34,35 @@ func GetMapInformation(sender, tile_ID):
 	active = true
 	print("Get Map Info Starting")
 	#print("Found Information for " , GlobalSettings.TileDictionary[tile_ID])
-	var spawn = pack.instantiate()
-	spawnContainer.add_child(spawn)
-	spawnContainer.get_child(0).get_child(0).get_child(0).text = str(GlobalSettings.TileDictionary[tile_ID]["Name"])
-	
-	var spawn2 = pack.instantiate()
-	spawnContainer.add_child(spawn2)
-	spawnContainer.get_child(1).get_child(0).get_child(0).text = "Move Cost = " + str(GlobalSettings.TileDictionary[tile_ID]["Move Cost"])
-	
-	var spawn3 = pack.instantiate()
-	spawnContainer.add_child(spawn3)
-	var index = GlobalSettings.TileDictionary[tile_ID]["Resource"]
-	spawnContainer.get_child(2).get_child(0).get_child(0).text = str(GlobalSettings.ResourceType.keys()[index])
+	if tile_ID != "7":
+		var spawn = pack.instantiate()
+		spawnContainer.add_child(spawn)
+		spawnContainer.get_child(0).get_child(0).get_child(0).text = str(GlobalSettings.TileDictionary[tile_ID]["Name"])
+		
+		var spawn2 = pack.instantiate()
+		spawnContainer.add_child(spawn2)
+		spawnContainer.get_child(1).get_child(0).get_child(0).text = "Move Cost = " + str(GlobalSettings.TileDictionary[tile_ID]["Move Cost"])
+		
+		var spawn3 = pack.instantiate()
+		spawnContainer.add_child(spawn3)
+		var index = GlobalSettings.TileDictionary[tile_ID]["Resource"]
+		spawnContainer.get_child(2).get_child(0).get_child(0).text = str(GlobalSettings.ResourceType.keys()[index])
+	elif tile_ID == "7":
+		var spawn = pack.instantiate()
+		spawnContainer.add_child(spawn)
+		spawnContainer.get_child(0).get_child(0).get_child(0).text = str(GlobalSettings.TileDictionary[tile_ID]["Name"])
+		
+		var spawn2 = pack.instantiate()
+		spawnContainer.add_child(spawn2)
+		spawnContainer.get_child(1).get_child(0).get_child(0).text = "Sell Price = " + "Wheat:" + str(GlobalSettings.ResourceGoldValues[1])
+		
+		var spawn3 = pack.instantiate()
+		spawnContainer.add_child(spawn3)
+		spawnContainer.get_child(2).get_child(0).get_child(0).text = "Sell Price = " + "Metal:" + str(GlobalSettings.ResourceGoldValues[2])
+		
+		var spawn4 = pack.instantiate()
+		spawnContainer.add_child(spawn4)
+		spawnContainer.get_child(3).get_child(0).get_child(0).text = "Sell Price = " + "Wood:" + str(GlobalSettings.ResourceGoldValues[3]) 
 	#print("Loop ", e, " done.")
 	kill_timer.start()
 	print("Kill Timer Started: ", kill_timer.time_left)

@@ -49,6 +49,7 @@ offset_left = 1.26004
 offset_top = 4.31599
 offset_right = 13.6117
 offset_bottom = 9.5972
+pivot_offset = Vector2(100, 100)
 theme_override_styles/panel = SubResource("StyleBoxFlat_kkad0")
 
 [node name="PurchaseHighLight" type="Panel" parent="."]
