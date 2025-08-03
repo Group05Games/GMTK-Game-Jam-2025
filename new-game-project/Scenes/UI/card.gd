@@ -8,6 +8,10 @@ const card_animations = [
 	"card_water",
 	"card_mountain",
 	"card_mine",
+	"card_volcano",
+	"card_city",
+	"",
+	"card_city"
 ]
 
 func _ready():
@@ -21,7 +25,7 @@ func set_type(type: String) -> void:
 	
 	var card_type_display = get_child(0).get_child(1) as AnimatedSprite2D
 	var anim_index = int(type)
-	if anim_index > card_animations.size():
+	if anim_index > card_animations.size() || card_animations[anim_index] == "":
 		card_type_display.visible = false
 		return
 	card_type_display.visible = true
