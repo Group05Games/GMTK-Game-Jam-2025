@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv6uhffrlkvbr"]
+[gd_scene load_steps=4 format=3 uid="uid://bv6uhffrlkvbr"]
 
 [ext_resource type="Script" uid="uid://3gk4tqhim4hh" path="res://Scenes/UI/card_inventory.gd" id="1_sb24l"]
-[ext_resource type="PackedScene" uid="uid://cukdt63uh2kt4" path="res://Scenes/UI/Card.tscn" id="2_i15yw"]
 [ext_resource type="StyleBox" uid="uid://blqm8dsm528q1" path="res://Scenes/UI/DeselectStyle.tres" id="2_sb24l"]
 
 [sub_resource type="Theme" id="Theme_xtco3"]
@@ -45,12 +44,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 alignment = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Card" parent="MenuPanel/CardContainer" instance=ExtResource("2_i15yw")]
-layout_mode = 2
-
-[node name="Card2" parent="MenuPanel/CardContainer" instance=ExtResource("2_i15yw")]
-layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
