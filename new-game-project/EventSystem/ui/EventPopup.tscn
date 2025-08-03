@@ -41,6 +41,6 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OptionContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+[node name="OptionContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

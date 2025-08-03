@@ -3,6 +3,10 @@ extends Control
 var event_data
 var tile_ref
 
+func _ready() -> void:
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	$Panel.mouse_filter = Control.MOUSE_FILTER_STOP
+
 func setup(event, tile):
 	event_data = event
 	tile_ref = tile
@@ -37,7 +41,7 @@ func _clamp_to_viewport() -> void:
 
 # --- OPTION HANDLERS ----------------------------------------------------------
 
-func _on_option_selected(option: Dictionary) -> void:
+func _on_option_selected(option: OptionData) -> void:
 	var eff_res = option.get("effect_script")
 	var eff = (eff_res.new() if eff_res is Script else eff_res)
 	if eff and eff.has_method("apply"):

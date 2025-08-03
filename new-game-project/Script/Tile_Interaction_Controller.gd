@@ -5,8 +5,18 @@ var MousePress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#map.debug_mode = HexagonTileMapLayer.DebugModeFlags.TILES_COORDS
-	pass
+	
+	var result = map.local_to_cube(Vector2(0.0, -64.0))
+	var tile = map.get_cell_source_id(map.cube_to_map(result))
+	var tile_def = GlobalSettings.TileDictionary[str(tile)]
+	
+	var tile_info = {
+		"tile_id": tile,
+		"tile_type": tile_def.Name,
+		"tile_def": tile_def
+	}
+	
+	EventManager.request_tile_event_for_cube(map, result, tile_info, self)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true:
@@ -22,15 +32,7 @@ func _physics_process(delta: float) -> void:
 		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
 			var tile_def = GlobalSettings.TileDictionary[search]
 			print(tile_def)
-			
-			var tile_info = {
-				"tile_id": tile,
-				"tile_type": tile_def.Name,
-				"tile_def": tile_def
-			}
-			
-			EventManager.request_tile_event_for_cube(map, result, tile_info, self)
-		
+
 		else:
 			print("invalid tile")
 	

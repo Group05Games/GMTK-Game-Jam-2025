@@ -122,4 +122,4 @@ func _open_event_popup(ev: GameEvent, tile_ref: Dictionary) -> void:
 	if popup.has_method("place_on_screen"):
 		var screen_pos = _world_to_screen(tile_ref["world_pos"])
 		popup.place_on_screen(screen_pos)
-		GlobalSettings.InMenu = true
+		
