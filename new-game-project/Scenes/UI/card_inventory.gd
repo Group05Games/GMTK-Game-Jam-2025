@@ -28,12 +28,13 @@ func _ready():
 		print("Loop child " + str(i))
 		container.get_child(i).gui_input.connect(on_card_clicked.bind(container.get_child(i).get_instance_id()))
 		
-	add_card("1", 1)
+	add_card("1", 2)
 	add_card("0", 2)
-	add_card("1", -1)
 	add_card("3", 1)
-	add_card("1", 1)
-	add_card("7", 1)
+	add_card("9", 1)
+	add_card("5", 1)
+	add_card("10", 1)
+	add_card("11", 1)
 
 # Add or remove cards to the inventory
 func add_card(type: String, amount: int) -> void:

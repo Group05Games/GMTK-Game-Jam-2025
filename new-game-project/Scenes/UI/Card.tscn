@@ -1,13 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://cukdt63uh2kt4"]
+[gd_scene load_steps=33 format=3 uid="uid://cukdt63uh2kt4"]
 
 [ext_resource type="Script" uid="uid://c8r5nmco4fcwy" path="res://Scenes/UI/card.gd" id="1_jt28g"]
 [ext_resource type="Texture2D" uid="uid://d2qy1yfis3flv" path="res://Assets/cards.png" id="2_5it3s"]
 [ext_resource type="Texture2D" uid="uid://d21oluevfgknf" path="res://Assets/Cards/Grassland.png" id="2_jt28g"]
 [ext_resource type="Texture2D" uid="uid://bang5pbwy57g6" path="res://Assets/Cards/Swamp.png" id="3_ghuro"]
 [ext_resource type="Texture2D" uid="uid://0en11mu3lcq0" path="res://Assets/Cards/Forest.png" id="3_n20b8"]
+[ext_resource type="Texture2D" uid="uid://bat87mpgw5by1" path="res://Assets/Cards/City.png" id="4_gnbdt"]
+[ext_resource type="Texture2D" uid="uid://cvw1qs1uuyol5" path="res://Assets/Cards/Farm.png" id="5_mbpun"]
 [ext_resource type="Texture2D" uid="uid://g4ojauodt46a" path="res://Assets/Cards/Water.png" id="6_c8xoj"]
 [ext_resource type="Texture2D" uid="uid://cieat0e4tu84o" path="res://Assets/Cards/Mine.png" id="6_rebix"]
 [ext_resource type="Texture2D" uid="uid://dkmj4225af0ge" path="res://Assets/Cards/Mountain.png" id="7_6tigm"]
+[ext_resource type="Texture2D" uid="uid://qsw4mtdcxp48" path="res://Assets/Cards/Volcano.png" id="8_6tigm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghuro"]
 atlas = ExtResource("2_5it3s")
@@ -23,6 +26,22 @@ region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnbdt"]
 atlas = ExtResource("3_ghuro")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i1tp"]
+atlas = ExtResource("4_gnbdt")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp0cs"]
+atlas = ExtResource("4_gnbdt")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8l6t"]
+atlas = ExtResource("5_mbpun")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwjbi"]
+atlas = ExtResource("5_mbpun")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtxqf"]
@@ -57,6 +76,14 @@ region = Rect2(0, 0, 96, 96)
 atlas = ExtResource("7_6tigm")
 region = Rect2(96, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx762"]
+atlas = ExtResource("8_6tigm")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk564"]
+atlas = ExtResource("8_6tigm")
+region = Rect2(96, 0, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbpun"]
 atlas = ExtResource("6_c8xoj")
 region = Rect2(0, 0, 96, 96)
@@ -88,6 +115,28 @@ animations = [{
 "loop": true,
 "name": &"card_bog",
 "speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i1tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp0cs")
+}],
+"loop": true,
+"name": &"card_city",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8l6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwjbi")
+}],
+"loop": true,
+"name": &"card_farm",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -135,6 +184,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qx762")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk564")
+}],
+"loop": true,
+"name": &"card_volcano",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mbpun")
 }, {
 "duration": 1.0,
@@ -175,7 +235,7 @@ autoplay = "card_background"
 [node name="CardTypeDisplay" type="AnimatedSprite2D" parent="Panel"]
 position = Vector2(64, 96)
 sprite_frames = SubResource("SpriteFrames_c8xoj")
-animation = &"card_grassland"
+animation = &"card_farm"
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
