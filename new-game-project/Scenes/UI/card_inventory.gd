@@ -33,6 +33,7 @@ func _ready():
 	add_card("1", -1)
 	add_card("3", 1)
 	add_card("1", 1)
+	add_card("7", 1)
 
 # Add or remove cards to the inventory
 func add_card(type: String, amount: int) -> void:
