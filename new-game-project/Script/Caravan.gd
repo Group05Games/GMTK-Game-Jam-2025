@@ -34,5 +34,4 @@ func definePath():
 	#Left click on already selected node should deselect that node and all child nodes
 	#If the head of the list and the tail of he list are the same node, we have completed the loop.
 	#  #Save the path running between all points
-	
-	pass
+	path.curve = pathCurve
