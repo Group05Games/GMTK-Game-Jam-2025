@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
 [ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
-[ext_resource type="PackedScene" uid="uid://dwjmbtbdqohtp" path="res://Prefabs/upgrade_tree.tscn" id="3_067mb"]
+[ext_resource type="PackedScene" path="res://Prefabs/upgrade_tree.tscn" id="3_067mb"]
 [ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
-[ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
-[ext_resource type="Script" uid="uid://d0xdcg0uqxfo2" path="res://Script/Stats_Controller.gd" id="4_twoia"]
-[ext_resource type="PackedScene" uid="uid://b45opsv2gvlwe" path="res://Prefabs/world_timer.tscn" id="7_rfh4w"]
+[ext_resource type="Theme" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
+[ext_resource type="Script" path="res://Script/Stats_Controller.gd" id="4_twoia"]
+[ext_resource type="PackedScene" path="res://Prefabs/world_timer.tscn" id="7_rfh4w"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
@@ -46,7 +46,66 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Menu"
 
+[node name="PathPlacePanel" type="Panel" parent="."]
+z_index = -1
+offset_left = 558.0
+offset_top = -639.0
+offset_right = 1142.0
+offset_bottom = -479.0
+theme = ExtResource("2_yp6pr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PathPlacePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 569.0
+offset_bottom = 146.0
+theme = ExtResource("2_yp6pr")
+theme_override_constants/separation = 27
+
+[node name="PlacePaths" type="Button" parent="PathPlacePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Place Paths"
+
+[node name="PathSelectPanel" type="Panel" parent="."]
+visible = false
+z_index = -1
+offset_left = 561.0
+offset_top = -479.0
+offset_right = 1139.0
+offset_bottom = -132.0
+theme = ExtResource("2_yp6pr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PathSelectPanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 6.0
+offset_right = 561.0
+offset_bottom = 332.0
+theme_override_constants/separation = 20
+
+[node name="Path1" type="Button" parent="PathSelectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Edit Path 1"
+
+[node name="Path2" type="Button" parent="PathSelectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Edit Path 2"
+
+[node name="Path3" type="Button" parent="PathSelectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Edit Path 3"
+
 [node name="LogPanel" type="Panel" parent="."]
+visible = false
 offset_left = 550.0
 offset_top = -645.0
 offset_right = 1150.0
@@ -85,7 +144,8 @@ offset_bottom = 40.0
 script = ExtResource("4_twoia")
 
 [node name="Panel" type="Panel" parent="StatsPanel"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = -28.725
 anchor_top = -10.175
 anchor_right = -20.9
@@ -152,5 +212,9 @@ offset_bottom = -619.0
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="PathPlacePanel/HBoxContainer/PlacePaths" to="." method="_on_place_paths_pressed"]
+[connection signal="pressed" from="PathSelectPanel/VBoxContainer/Path1" to="." method="_on_path_1_pressed"]
+[connection signal="pressed" from="PathSelectPanel/VBoxContainer/Path2" to="." method="_on_path_2_pressed"]
+[connection signal="pressed" from="PathSelectPanel/VBoxContainer/Path3" to="." method="_on_path_3_pressed"]
 [connection signal="pressed" from="LogPanel/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]

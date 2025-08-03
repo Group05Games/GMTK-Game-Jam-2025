@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	value = (day_tracker.wait_time - day_tracker.time_left)
-	print(value)
+	#print(value)
 
 
 func _on_day_tracker_timeout() -> void:
