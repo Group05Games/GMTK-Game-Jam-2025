@@ -79,7 +79,7 @@ func select_card(instance_id: int) -> void:
 # HANDLERS #
 ############
 func on_card_clicked(event: InputEvent, instance_id: int) -> void:
-	if event is not InputEventMouseButton:
+	if !self.is_open || event is not InputEventMouseButton:
 		return
 		
 	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
@@ -96,7 +96,7 @@ func on_card_clicked(event: InputEvent, instance_id: int) -> void:
 
 # Deselect any selected cards
 func on_deselect_button(event: InputEvent) -> void:
-	if event is not InputEventMouseButton:
+	if !self.is_open || event is not InputEventMouseButton:
 		return
 		
 	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
