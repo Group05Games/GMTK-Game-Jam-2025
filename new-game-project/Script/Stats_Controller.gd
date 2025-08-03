@@ -17,3 +17,4 @@ func _physics_process(delta: float) -> void:
 	wheat.text = "Wheat " + str(GlobalSettings.CityInventory.inventory[GlobalSettings.ResourceType.WHEAT])
 	metal.text = "Metal " + str(GlobalSettings.CityInventory.inventory[GlobalSettings.ResourceType.METAL])
 	wood.text = "Wood " + str(GlobalSettings.CityInventory.inventory[GlobalSettings.ResourceType.WOOD])
+	caravan_total.text = "Caravan " + str(GlobalSettings.caravanInUse) + "/" +  str(GlobalSettings.caravanCapacity)

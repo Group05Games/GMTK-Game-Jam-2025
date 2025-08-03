@@ -10,9 +10,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	value = (day_tracker.wait_time - day_tracker.time_left)
-	print(value)
+	#print(value)
 
 
 func _on_day_tracker_timeout() -> void:
 	GlobalSettings.day += 1
 	date.text = "Day: %s" % [GlobalSettings.day]
+	
+	GlobalSettings.CityInventory.inventory[GlobalSettings.ResourceType.GOLD] -= GlobalSettings.UpkeepCost

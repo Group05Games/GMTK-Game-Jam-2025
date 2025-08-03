@@ -38,6 +38,15 @@ var MinZoom : float = 0.1
 var InMenu : bool = false
 var bus_index: int
 var day : int
+var caravanMoveLimit : int = 5
+var caravanCapacity : int = 1
+var caravanInUse : int = 1
+var UpkeepCost : int = 0
+
+var Upgrades : Dictionary = {
+	"0" : "Capacity",
+	"1" : "MovePlusFive"
+}
 
 func _ready():
 	CityInventory.initInv()
@@ -65,4 +74,4 @@ func _ready():
 	print("Metal " + str(CityInventory.inventory[ResourceType.METAL]))
 	print()
 	print("Wheat: " + str(CityInventory.inventory[ResourceType.WHEAT]))
-	#CityInventory.convertToGold()
+	CityInventory.convertToGold()

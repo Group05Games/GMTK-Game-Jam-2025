@@ -46,24 +46,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Menu"
 
-[node name="LogPanel" type="Panel" parent="."]
-offset_left = 550.0
-offset_top = -645.0
-offset_right = 1150.0
-offset_bottom = 5.0
-theme = ExtResource("2_yp6pr")
-metadata/_edit_use_anchors_ = true
-
-[node name="Log" type="Button" parent="LogPanel"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 590.0
-offset_right = 595.0
-offset_bottom = 641.0
-theme_override_font_sizes/font_size = 32
-text = "Hide"
-metadata/_edit_use_anchors_ = true
-
 [node name="UpgradesPanel" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -76,6 +58,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="UpgradeTree" parent="UpgradesPanel" instance=ExtResource("3_067mb")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0834123
+anchor_top = -0.0798548
+anchor_right = 1.29479
+anchor_bottom = 1.42105
+offset_left = 0.0
+offset_top = 0.0
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
 
 [node name="StatsPanel" type="Control" parent="."]
 layout_mode = 3
@@ -136,12 +127,13 @@ size_flags_vertical = 3
 [node name="GiveMeRandomResource" type="Button" parent="."]
 visible = false
 z_index = -1
-offset_left = 314.0
-offset_top = 417.0
-offset_right = 1016.0
-offset_bottom = 568.0
+offset_left = -728.0
+offset_top = -378.0
+offset_right = -26.0
+offset_bottom = -227.0
 theme = ExtResource("4_s857k")
 text = "Random Item Get"
+metadata/_edit_use_anchors_ = true
 
 [node name="WorldTimer" parent="." instance=ExtResource("7_rfh4w")]
 offset_left = 171.0
@@ -152,5 +144,4 @@ offset_bottom = -619.0
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="LogPanel/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]
