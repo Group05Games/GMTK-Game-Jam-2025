@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 		MousePress = get_global_mouse_position() #Where is mouse cursor
 		var result : Vector3i = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
 		var initialPoint : Vector3i
+		
 		if GlobalSettings.caravanPathBuiler == []: 
 			initialPoint = map.map_to_cube(Vector2i(0,0))
 			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
@@ -64,9 +65,10 @@ func _physics_process(delta: float) -> void:
 		
 		if result in map.cube_neighbors(initialPoint):
 			if result not in GlobalSettings.caravanPathBuiler:
-				print("adding new space to path" + str(result))
-				GlobalSettings.caravanPathBuiler.append(result)
-				print(str(GlobalSettings.caravanPathBuiler))
+				if GlobalSettings.caravanPathBuiler.size() < GlobalSettings.caravanMoveLimit + 1:
+					print("adding new space to path" + str(result))
+					GlobalSettings.caravanPathBuiler.append(result)
+					print(str(GlobalSettings.caravanPathBuiler))
 			else:
 				#Find result in path builder
 				var end : int = GlobalSettings.caravanPathBuiler.find(result)
@@ -81,7 +83,7 @@ func _physics_process(delta: float) -> void:
 					temp.append(map.map_to_cube(Vector2i(0,0)))
 				GlobalSettings.caravanPathBuiler = temp
 				print("Removed elements. New Array: " + str(temp))
-		else:
+		elif result in GlobalSettings.caravanPathBuiler:
 			#Find result in path builder
 			var end : int = GlobalSettings.caravanPathBuiler.find(result)
 			#Remove all elements after but excluding result
