@@ -10,6 +10,7 @@ class_name Caravan
 var CaravanInventory : Inventory = Inventory.new()
 var isActive : bool = false
 var pathCurve : Curve2D = null
+var pathHexArray : Array = []
 
 func _ready():
 	CaravanInventory.initInv()

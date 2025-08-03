@@ -78,10 +78,13 @@ func _physics_process(delta: float) -> void:
 				
 				if GlobalSettings.caravanIndex == 1:
 					GlobalSettings.Caravan1.pathCurve = curve
+					GlobalSettings.Caravan1.pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 2:
 					GlobalSettings.Caravan2.pathCurve = curve
+					GlobalSettings.Caravan2.pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 3:
 					GlobalSettings.Caravan3.pathCurve = curve
+					GlobalSettings.Caravan3.pathHexArray = GlobalSettings.caravanPathBuiler
 				
 				GlobalSettings.caravanIndex = 0
 				GlobalSettings.caravanPathBuiler = []
