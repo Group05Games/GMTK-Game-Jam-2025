@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b45opsv2gvlwe"]
+[gd_scene load_steps=3 format=3 uid="uid://b45opsv2gvlwe"]
 
 [ext_resource type="Script" uid="uid://dc28wsxjltemk" path="res://Script/WorldTimer.gd" id="1_5clc4"]
+[ext_resource type="Theme" uid="uid://dwlhq8si2mho" path="res://Assets/WorldTimer.tres" id="1_emhdo"]
 
 [node name="WorldTimer" type="Control"]
 layout_mode = 3
@@ -14,11 +15,13 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 361.0
 offset_bottom = 186.0
+theme = ExtResource("1_emhdo")
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 30.0
+value = 15.0
 script = ExtResource("1_5clc4")
 
 [node name="DayTracker" type="Timer" parent="VBoxContainer/ProgressBar" groups=["WorldTimer"]]
