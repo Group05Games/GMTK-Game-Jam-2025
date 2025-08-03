@@ -129,16 +129,15 @@ func _physics_process(delta: float) -> void:
 					while i < end + 1:
 						temp.append(GlobalSettings.caravanPathBuiler[i])
 						i += 1;
-					var toPop = get_tree().get_nodes_in_group("Caravan")
-					for e in toPop:
-						e.line_2d.remove_point(e.line_2d.points.size() - 1)
 					
 					if temp.is_empty():
 						temp.append(map.map_to_cube(Vector2i(0,0)))
-						for e in get_tree().get_nodes_in_group("Caravan"):
-							
-							e.line_2d.add_point(Vector2(128, 128))
 					GlobalSettings.caravanPathBuiler = temp
+					
+					var c = get_tree().get_nodes_in_group("Caravan")
+					c[0].line_2d.clear_points()
+					for item in temp:
+						c[0].line_2d.add_point(map.cube_to_local(item))
 					print("Removed elements. New Array: " + str(temp))
 		#Not a neighbor but in our path, remove all nodes after this
 		elif result in GlobalSettings.caravanPathBuiler:
@@ -153,6 +152,11 @@ func _physics_process(delta: float) -> void:
 			if temp.is_empty():
 					temp.append(map.map_to_cube(Vector2i(0,0)))
 			GlobalSettings.caravanPathBuiler = temp
+			
+			var c = get_tree().get_nodes_in_group("Caravan")
+			c[0].line_2d.clear_points()
+			for item in temp:
+				c[0].line_2d.add_point(map.cube_to_local(item))
 			print("Removed elements. New Array: " + str(temp))
 	
 	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
