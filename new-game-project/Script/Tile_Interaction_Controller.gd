@@ -107,7 +107,7 @@ func _physics_process(delta: float) -> void:
 					Caravans[2].pathCurve = curve
 					Caravans[2].definePath()
 					Caravans[2].pathHexArray = GlobalSettings.caravanPathBuiler
-				
+				#Caravans[0].getItemsFromLoop()
 				GlobalSettings.caravanIndex = 0
 				GlobalSettings.caravanPathBuiler = []
 			else:

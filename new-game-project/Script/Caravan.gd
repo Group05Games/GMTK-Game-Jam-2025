@@ -42,6 +42,20 @@ func definePath():
 	print(pathCurve)
 	path_to_follow.curve = pathCurve
 
+func getItemsFromLoop():
+	for i in pathHexArray:
+		var tile = map.get_cell_source_id(map.cube_to_map(i))
+		
+		var search = str(tile)
+		if tile == -1 || GlobalSettings.TileDictionary[search] == null:
+			print("invalid tile")
+			return
+		
+		var tile_def = GlobalSettings.TileDictionary[search]
+		var resource = tile_def["Resource"]
+		if resource != 0:
+			CaravanInventory.addArray([resource], [1])
+	print("Caravan Inv: " + str(CaravanInventory.inventory[1]))
 
 func _on_tree_entered() -> void:
 	await get_tree().create_timer(.1).timeout
