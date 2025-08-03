@@ -37,6 +37,7 @@ offset_right = -1023.0
 offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_jt28g")
 
 [node name="Panel" type="Panel" parent="."]
@@ -44,7 +45,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 offset_right = 128.0
 offset_bottom = 192.0
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
 position = Vector2(64, 96)
@@ -57,6 +58,7 @@ layout_mode = 0
 offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 57.0
+mouse_filter = 1
 text = "Card Type
 "
 horizontal_alignment = 1

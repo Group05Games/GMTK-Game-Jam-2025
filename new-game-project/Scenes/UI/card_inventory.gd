@@ -7,7 +7,7 @@ var cardsInventory: Dictionary
 @onready var card_scene = preload("res://Scenes/UI/Card.tscn")
 
 var selected_card_instance_id = 0
-var is_open = false
+var is_open = true
 var tween: Tween
 var menu_panel_original_position: Vector2
 const LIFT_AMOUNT = 192
@@ -16,7 +16,6 @@ const LIFT_AMOUNT = 192
 @onready var container = $MenuPanel/CardContainer
 @onready var deselect_card_button = $MenuPanel/DeselectButton
 @onready var open_menu_hover = $OpenMenuHover
-@onready var hold_open_menu_hover = $HoldOpenMenuHover
 
 func _ready():
 	# Init card inventory
@@ -24,11 +23,15 @@ func _ready():
 		cardsInventory[str(i)] = 0
 	
 	open_menu_hover.mouse_entered.connect(on_open_mouse_entered)
-	hold_open_menu_hover.mouse_exited.connect(on_hold_open_mouse_exited)
+	menu_panel.mouse_exited.connect(on_hold_open_mouse_exited)
 	
 	deselect_card_button.gui_input.connect(on_deselect_button)
 	
 	menu_panel_original_position = menu_panel.position
+	
+	is_open = false
+	menu_panel.position += Vector2(0, LIFT_AMOUNT)
+	
 
 	for i in range(container.get_child_count()):
 		print("Loop child " + str(i))
@@ -118,6 +121,7 @@ func on_open_mouse_entered() -> void:
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(menu_panel, "position", menu_panel_original_position, 0.2)
+	print("MOUSE ENTER")
 	#menu_panel.position = menu_panel_original_position
 	
 func on_hold_open_mouse_exited() -> void:
@@ -130,5 +134,6 @@ func on_hold_open_mouse_exited() -> void:
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(menu_panel, "position", menu_panel_original_position + Vector2(0, LIFT_AMOUNT), 0.2)
+	print("MOUSE EXIT")
 	#menu_panel.position = menu_panel_original_position + Vector2(0, LIFT_AMOUNT)
 	
