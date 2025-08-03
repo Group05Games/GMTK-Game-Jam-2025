@@ -12,12 +12,13 @@ const LIFT_AMOUNT = 192
 @onready var menu_panel = $MenuPanel
 @onready var container = $MenuPanel/CardContainer
 @onready var deselect_card_button = $MenuPanel/DeselectButton
-@onready var open_menu_hover = $OpenMenuHover
+@onready var open_menu_hover = $MarginContainer
 
 func _ready():
 	# Drawer starts in open position so we need to move it down
 	menu_panel_original_position = menu_panel.position
-	menu_panel.position += Vector2(0, LIFT_AMOUNT)
+	menu_panel.modulate = Color("#ffffff00")
+	#menu_panel.position += Vector2(0, LIFT_AMOUNT)
 	
 	open_menu_hover.mouse_entered.connect(on_mouse_entered)
 	menu_panel.mouse_exited.connect(on_mouse_exited)
@@ -101,6 +102,9 @@ func on_deselect_button(event: InputEvent) -> void:
 	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
 		return
 	
+	deselect()
+	
+func deselect():
 	print("DESELECT CARD")
 	select_card(0)
 	GlobalSettings.set_in_tile_placement_mode(false)
@@ -110,19 +114,21 @@ func on_mouse_entered() -> void:
 	if(self.is_open or GlobalSettings.InMenu or GlobalSettings.InPathPlacementMode):
 		return
 	self.is_open = true
+	menu_panel.modulate = Color("#ffffffff")
 	
-	if tween and tween.is_running():
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(menu_panel, "position", menu_panel_original_position, 0.2)
+	#if tween and tween.is_running():
+		#tween.kill()
+	#tween = create_tween()
+	#tween.tween_property(menu_panel, "position", menu_panel_original_position, 0.2)
 
 # Close the drawer
 func on_mouse_exited() -> void:
 	if(!self.is_open):
 		return
 	self.is_open = false
+	menu_panel.modulate = Color("#ffffff00")
 	
-	if tween and tween.is_running():
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(menu_panel, "position", menu_panel_original_position + Vector2(0, LIFT_AMOUNT), 0.2)
+	#if tween and tween.is_running():
+		#tween.kill()
+	#tween = create_tween()
+	#tween.tween_property(menu_panel, "position", menu_panel_original_position + Vector2(0, LIFT_AMOUNT), 0.2)

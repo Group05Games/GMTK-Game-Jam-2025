@@ -17,6 +17,8 @@ var ResourceGoldValues : Dictionary = {
 	ResourceType.GOLD : 1,
 }
 
+var ProtectedTiles = ["7", "9"]
+
 ## Make sure the ID number of the Tile Dictionary matches the ID number of the TileSet.
 var TileDictionary : Dictionary = {
 	"0" : {"Name" : "Grasslands", "Move Cost" : 1, "Resource" : ResourceType.WHEAT},
