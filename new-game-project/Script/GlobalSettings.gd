@@ -56,6 +56,8 @@ var caravanMoveLimit : int = 5
 var caravanCapacity : int = 1
 var caravanInUse : int = 0
 var UpkeepCost : int = 5
+var caravanIndex : int = 0
+var caravanPathBuiler : Array = []
 
 var Upgrades : Dictionary = {
 	"0" : "Capacity",
