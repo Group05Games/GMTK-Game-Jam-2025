@@ -10,6 +10,7 @@ _data = {
 point_count = 6
 
 [node name="Caravan" type="Node2D"]
+script = ExtResource("2_7f7nq")
 
 [node name="Path2D2" type="Path2D" parent="."]
 self_modulate = Color(0.694118, 0.709804, 0, 1)
@@ -25,10 +26,9 @@ rotates = false
 loop = false
 
 [node name="Caravan" type="Sprite2D" parent="Path2D2/PathFollow2D"]
-z_index = -1
+z_index = -4
 scale = Vector2(0.055, 0.055)
 texture = ExtResource("1_g7qt0")
-script = ExtResource("2_7f7nq")
 
 [node name="Timer" type="Timer" parent="Path2D2/PathFollow2D/Caravan"]
 wait_time = 2.0
