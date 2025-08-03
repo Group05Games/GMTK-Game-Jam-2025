@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beqwlg1unue50"
-path="res://.godot/imported/BuildTilePointer.png-59c983c27a6f127deecb85957e351fad.ctex"
+uid="uid://cnwg32llc5pmp"
+path="res://.godot/imported/PathPlannerPointer.png-b26de25ad159e047520e18627a035483.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BuildTilePointer.png"
-dest_files=["res://.godot/imported/BuildTilePointer.png-59c983c27a6f127deecb85957e351fad.ctex"]
+source_file="res://Assets/PathPlannerPointer.png"
+dest_files=["res://.godot/imported/PathPlannerPointer.png-b26de25ad159e047520e18627a035483.ctex"]
 
 [params]
 

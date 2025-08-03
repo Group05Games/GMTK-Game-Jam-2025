@@ -83,12 +83,15 @@ func on_card_clicked(event: InputEvent, instance_id: int) -> void:
 		
 	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
 		return
+		
+	# Make sure we aren't in another menu mode
+	if GlobalSettings.InPathPlacementMode || GlobalSettings.InMenu:
+		return
 	
 	var card = instance_from_id(instance_id)
-	print("CARD WAS PRESSED (TYPE): " + card.card_type)
+	print("CARD WAS SELECTED (TYPE): " + card.card_type)
 	select_card(instance_id)
-	GlobalSettings.InTilePlacementMode = true
-	#add_card(card.card_type, -1)
+	GlobalSettings.set_in_tile_placement_mode(true)
 
 # Deselect any selected cards
 func on_deselect_button(event: InputEvent) -> void:
@@ -100,7 +103,7 @@ func on_deselect_button(event: InputEvent) -> void:
 	
 	print("DESELECT CARD")
 	select_card(0)
-	GlobalSettings.InTilePlacementMode = false
+	GlobalSettings.set_in_tile_placement_mode(false)
 
 # Open the drawer
 func on_mouse_entered() -> void:

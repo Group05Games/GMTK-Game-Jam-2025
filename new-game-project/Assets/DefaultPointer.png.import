@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beqwlg1unue50"
-path="res://.godot/imported/BuildTilePointer.png-59c983c27a6f127deecb85957e351fad.ctex"
+uid="uid://coq8wjlwh48km"
+path="res://.godot/imported/DefaultPointer.png-1221a14bcdd30964585069aa21ad33d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BuildTilePointer.png"
-dest_files=["res://.godot/imported/BuildTilePointer.png-59c983c27a6f127deecb85957e351fad.ctex"]
+source_file="res://Assets/DefaultPointer.png"
+dest_files=["res://.godot/imported/DefaultPointer.png-1221a14bcdd30964585069aa21ad33d0.ctex"]
 
 [params]
 
