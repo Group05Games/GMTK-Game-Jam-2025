@@ -57,30 +57,43 @@ func _physics_process(delta: float) -> void:
 		var result : Vector3i = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
 		var initialPoint : Vector3i
 		if GlobalSettings.caravanPathBuiler == []: 
-			initialPoint = map.local_to_cube(Vector2(0,0))
+			initialPoint = map.map_to_cube(Vector2i(0,0))
+			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
 		else:
 			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
 		
 		if result in map.cube_neighbors(initialPoint):
 			if result not in GlobalSettings.caravanPathBuiler:
 				print("adding new space to path" + str(result))
+				GlobalSettings.caravanPathBuiler.append(result)
+				print(str(GlobalSettings.caravanPathBuiler))
 			else:
 				#Find result in path builder
+				var end : int = GlobalSettings.caravanPathBuiler.find(result)
+				#Remove all elements after but excluding result
+				var i = 0
+				var temp = []
+				while i < end + 1:
+					temp.append(GlobalSettings.caravanPathBuiler[i])
+					i += 1;
 				
-				#Remove all elements from result till the end of the path
-				pass
-		
-		var tile = map.get_cell_source_id(map.cube_to_map(result)) #Covert Hex Space into 2D TileMap Space
-		#print(tile)
-		#print(GlobalSettings.TileDictionary.Bog.ID)
-		
-		var search = str(tile)
-		if tile != -1 && GlobalSettings.TileDictionary[search] != null:
-			var tile_def = GlobalSettings.TileDictionary[search]
-			print(tile_def)
-
+				if temp.is_empty():
+					temp.append(map.map_to_cube(Vector2i(0,0)))
+				GlobalSettings.caravanPathBuiler = temp
+				print("Removed elements. New Array: " + str(temp))
 		else:
-			print("invalid tile")
+			#Find result in path builder
+			var end : int = GlobalSettings.caravanPathBuiler.find(result)
+			#Remove all elements after but excluding result
+			var i = 0
+			var temp = []
+			while i < end + 1:
+				temp.append(GlobalSettings.caravanPathBuiler[i])
+				i += 1;
+			if temp.is_empty():
+					temp.append(map.map_to_cube(Vector2i(0,0)))
+			GlobalSettings.caravanPathBuiler = temp
+			print("Removed elements. New Array: " + str(temp))
 	
 	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
 		GlobalSettings.set_in_path_placement_mode(false)
