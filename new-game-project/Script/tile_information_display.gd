@@ -25,14 +25,14 @@ func GetMapInformation(sender, tile_ID):
 	self.global_position = get_global_mouse_position()
 	if active == true:
 		for e in spawnContainer.get_children():
-			print(e)
+			#print(e)
 			e.queue_free()
 			active = false
 	
 	await get_tree().create_timer(.1).timeout
 	
 	active = true
-	print("Get Map Info Starting")
+	#print("Get Map Info Starting")
 	#print("Found Information for " , GlobalSettings.TileDictionary[tile_ID])
 	if tile_ID != "7":
 		var spawn = pack.instantiate()
@@ -65,11 +65,11 @@ func GetMapInformation(sender, tile_ID):
 		spawnContainer.get_child(3).get_child(0).get_child(0).text = "Sell Price = " + "Wood:" + str(GlobalSettings.ResourceGoldValues[3]) 
 	#print("Loop ", e, " done.")
 	kill_timer.start()
-	print("Kill Timer Started: ", kill_timer.time_left)
+	#print("Kill Timer Started: ", kill_timer.time_left)
 
 
 func killTimer():
 	for e in spawnContainer.get_children():
-			print(e)
+			#print(e)
 			e.queue_free()
 			active = false

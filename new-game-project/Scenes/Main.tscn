@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://dpwvrpmexdr2q"]
+[gd_scene load_steps=12 format=4 uid="uid://dpwvrpmexdr2q"]
 
 [ext_resource type="Script" uid="uid://clp11n0xr2rgn" path="res://Script/Tile_Interaction_Controller.gd" id="1_asxmm"]
 [ext_resource type="PackedScene" uid="uid://b7kdwob6oncjc" path="res://Prefabs/Camera.tscn" id="2_feffm"]
 [ext_resource type="TileSet" uid="uid://cp3r1y04vw1ab" path="res://Assets/Board_Tile_Tilemaps.tres" id="3_tq7qs"]
 [ext_resource type="Script" uid="uid://buj6ft1vvdf2f" path="res://addons/hexagon_tilemaplayer/hexagon_tilemaplayer.gd" id="4_asxmm"]
-[ext_resource type="PackedScene" uid="uid://d2fmv65w1hmrl" path="res://Prefabs/Caravan.tscn" id="5_v1gob"]
 [ext_resource type="PackedScene" uid="uid://bv6uhffrlkvbr" path="res://Scenes/UI/CardInventory.tscn" id="7_50glp"]
 [ext_resource type="AudioStream" uid="uid://ckopeamqn368i" path="res://Audio/Vibing Over Venus.mp3" id="7_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://bw2o1uuun6ifq" path="res://Prefabs/tile_information_display.tscn" id="7_jw32o"]
@@ -42,18 +41,23 @@ offset_right = 132.0
 offset_bottom = 544.0
 scale = Vector2(1.25, 1.25)
 
-[node name="Caravan" parent="." instance=ExtResource("5_v1gob")]
-
 [node name="TileInformationDisplay" parent="." instance=ExtResource("7_jw32o")]
 
 [node name="Popups" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -828.0
+offset_top = -452.0
+offset_right = 902.0
+offset_bottom = 534.0
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamPlaylist_1p5hy")
 volume_db = -23.706
-autoplay = true
 bus = &"Music"
+
+[node name="CaravanHolder" type="Node2D" parent="." groups=["CaravanHolder"]]
+position = Vector2(110, 0)
+
+[connection signal="ready" from="." to="." method="_on_ready"]

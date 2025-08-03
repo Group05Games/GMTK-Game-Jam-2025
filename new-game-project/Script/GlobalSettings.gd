@@ -6,6 +6,7 @@ var CityInventory : Inventory = Inventory.new()
 @onready var Caravan1 : Caravan = Caravan.new()
 @onready var Caravan2 : Caravan = Caravan.new()
 @onready var Caravan3 : Caravan = Caravan.new()
+@export var CaravanToSpawn: PackedScene = preload("res://Prefabs/Caravan.tscn")
 
 var CityState =  0
 

@@ -45,6 +45,8 @@ TileMap="TileMap Goes Here"
 PauseMenu=""
 WorldTimer=""
 UpgradeLine=""
+CaravanHolder=""
+Caravan=""
 
 [input]
 

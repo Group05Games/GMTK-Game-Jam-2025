@@ -5,6 +5,7 @@ extends Camera2D
 @onready var menu: Button = $MenuPanel/HBoxContainer/Menu
 @onready var stats_panel: Control = $StatsPanel
 @onready var upgrades_panel: Control = $UpgradesPanel
+@onready var caravansToMove = get_tree().get_nodes_in_group("Caravan")
 @onready var log_panel: Panel = $LogPanel
 @onready var path_select_panel = $PathSelectPanel
 
@@ -26,10 +27,14 @@ func handle_movement(delta: float) -> void:
 		self.global_position += input_vector * GlobalSettings.MoveSpeed * 2 * delta
 		for e in upgrade_line:
 			e.global_position += input_vector * GlobalSettings.MoveSpeed * 2 * delta
+		for e in caravansToMove:
+			e.path_to_follow.global_position += input_vector * GlobalSettings.MoveSpeed * 2 * delta
 	elif input_vector != Vector2.ZERO: 
 		self.global_position += input_vector * GlobalSettings.MoveSpeed * delta
 		for e in upgrade_line:
 			e.global_position += input_vector * GlobalSettings.MoveSpeed * delta
+		for e in caravansToMove:
+			e.path_to_follow.global_position += input_vector * GlobalSettings.MoveSpeed * delta
 
 func handle_zoom() -> void:
 	var scroll_delta := Vector2(GlobalSettings.ScrollSpeed, GlobalSettings.ScrollSpeed)

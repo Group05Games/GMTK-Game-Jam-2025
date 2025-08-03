@@ -9,27 +9,32 @@ _data = {
 }
 point_count = 6
 
-[node name="Caravan" type="Node2D"]
+[node name="Caravan" type="Node2D" groups=["Caravan"]]
 script = ExtResource("2_7f7nq")
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="PathToFollow" type="Path2D" parent="."]
 self_modulate = Color(0.694118, 0.709804, 0, 1)
 position = Vector2(-706.781, -500.604)
 scale = Vector2(6.19692, 5.06995)
 curve = SubResource("Curve2D_feffm")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="PathToFollow"]
 position = Vector2(133.741, 116.097)
 rotation = -0.942
 progress = 22.3854
 rotates = false
 loop = false
 
-[node name="Caravan" type="Sprite2D" parent="Path2D2/PathFollow2D"]
+[node name="Caravan" type="Sprite2D" parent="PathToFollow/PathFollow2D"]
 z_index = -4
 scale = Vector2(0.055, 0.055)
 texture = ExtResource("1_g7qt0")
 
-[node name="Timer" type="Timer" parent="Path2D2/PathFollow2D/Caravan"]
+[node name="Timer" type="Timer" parent="PathToFollow/PathFollow2D/Caravan"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

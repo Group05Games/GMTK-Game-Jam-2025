@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var map: HexagonTileMapLayer = $HexagonTileMapLayer
 @onready var cardInventory = $Camera2D/CardSelectMenu
+var Caravans
 var MousePress
+@onready var caravan_holder: Node2D = $CaravanHolder
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +19,7 @@ func _ready() -> void:
 	}
 	
 	EventManager.request_tile_event_for_cube(map, result, tile_info, self)
+	caravan_holder.position = map.cube_to_local(Vector3(0,0,0))
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true && !GlobalSettings.InPathPlacementMode:
@@ -31,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			return
 		
 		var tile_def = GlobalSettings.TileDictionary[search]
-		print(tile_def)
+		#print(tile_def)
 		
 		handle_tile_placements(search, clicked_tile_position)
 		
@@ -59,12 +62,18 @@ func _physics_process(delta: float) -> void:
 		
 		if GlobalSettings.caravanPathBuiler == []: 
 			initialPoint = map.map_to_cube(Vector2i(0,0))
+			print(GlobalSettings.Caravan1.line_2d)
+			GlobalSettings.Caravan1.line_2d = GlobalSettings.Caravan1.get_child(1)
+			for e in get_tree().get_nodes_in_group("Caravan"):
+				e.line_2d.add_point(Vector2(128, 128))
 			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
 		else:
 			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
 		
 		if result in map.cube_neighbors(initialPoint):
 			if result == map.map_to_cube(Vector2i(0,0)):
+				for e in get_tree().get_nodes_in_group("Caravan"):
+					e.line_2d.add_point(Vector2(128, 128))
 				print("Complete Loop")
 				GlobalSettings.set_in_path_placement_mode(false)
 				
@@ -77,15 +86,17 @@ func _physics_process(delta: float) -> void:
 					curve.add_point(point)
 				
 				if GlobalSettings.caravanIndex == 1:
-					GlobalSettings.Caravan1.pathCurve = curve
-					GlobalSettings.Caravan1.definePath()
-					GlobalSettings.Caravan1.pathHexArray = GlobalSettings.caravanPathBuiler
+					Caravans[0].pathCurve = curve
+					Caravans[0].definePath()
+					Caravans[0].pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 2:
 					GlobalSettings.Caravan2.pathCurve = curve
+					GlobalSettings.Caravan2.line_2d.add_point(curveBuilder)
 					GlobalSettings.Caravan2.definePath()
 					GlobalSettings.Caravan2.pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 3:
 					GlobalSettings.Caravan3.pathCurve = curve
+					GlobalSettings.Caravan3.line_2d.add_point(curveBuilder)
 					GlobalSettings.Caravan3.definePath()
 					GlobalSettings.Caravan3.pathHexArray = GlobalSettings.caravanPathBuiler
 				
@@ -97,6 +108,8 @@ func _physics_process(delta: float) -> void:
 					if GlobalSettings.caravanPathBuiler.size() < GlobalSettings.caravanMoveLimit + 1:
 						print("adding new space to path" + str(result))
 						GlobalSettings.caravanPathBuiler.append(result)
+						var c = get_tree().get_nodes_in_group("Caravan")
+						c[0].line_2d.add_point(map.cube_to_local(result))
 						print(str(GlobalSettings.caravanPathBuiler))
 				#In our path, remove all nodes after this item
 				else:
@@ -108,9 +121,15 @@ func _physics_process(delta: float) -> void:
 					while i < end + 1:
 						temp.append(GlobalSettings.caravanPathBuiler[i])
 						i += 1;
+					var toPop = get_tree().get_nodes_in_group("Caravan")
+					for e in toPop:
+						e.line_2d.remove_point(e.line_2d.points.size() - 1)
 					
 					if temp.is_empty():
 						temp.append(map.map_to_cube(Vector2i(0,0)))
+						for e in get_tree().get_nodes_in_group("Caravan"):
+							
+							e.line_2d.add_point(Vector2(128, 128))
 					GlobalSettings.caravanPathBuiler = temp
 					print("Removed elements. New Array: " + str(temp))
 		#Not a neighbor but in our path, remove all nodes after this
@@ -153,3 +172,22 @@ func handle_tile_placements(clicked_tile_id, clicked_tile_position) -> void:
 		map.set_cell(clicked_tile_position, int(selected_card.card_type), Vector2i(0, 0))
 		cardInventory.add_card(selected_card.card_type, -1)
 		cardInventory.deselect()
+
+
+func _on_ready() -> void:
+	var spawner = GlobalSettings.CaravanToSpawn.instantiate()
+	spawner.name = "Caravan1"
+	get_tree().get_first_node_in_group("CaravanHolder").add_child(spawner)
+	
+	
+	var spawner2 = GlobalSettings.CaravanToSpawn.instantiate()
+	spawner2.hide()
+	spawner2.name = "Caravan2"
+	get_tree().get_first_node_in_group("CaravanHolder").add_child(spawner2)
+	
+	var spawner3 = GlobalSettings.CaravanToSpawn.instantiate()
+	spawner3.hide()
+	spawner3.name = "Caravan3"
+	get_tree().get_first_node_in_group("CaravanHolder").add_child(spawner3)
+	
+	Caravans = get_tree().get_nodes_in_group("Caravan")
