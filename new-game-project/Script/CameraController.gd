@@ -77,6 +77,8 @@ func _on_place_paths_pressed():
 	path_select_panel.visible = !path_select_panel.visible
 
 func _on_path_1_pressed():
+	#var path = recordPath()
+	#GlobalSettings.path1 = path
 	pass # Replace with function body.
 
 func _on_path_2_pressed():

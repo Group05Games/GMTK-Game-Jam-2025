@@ -1,4 +1,5 @@
 extends Node
+class_name Caravan
 
 @onready var map : HexagonTileMapLayer = get_tree().get_first_node_in_group("TileMap")
 @onready var path = $Path2D2
@@ -7,6 +8,7 @@ extends Node
 @onready var timer = $Path2D2/PathFollow2D/Caravan/Timer
 
 var CaravanInventory : Inventory = Inventory.new()
+var isActive : bool = false
 
 func _ready():
 	CaravanInventory.initInv()

@@ -3,6 +3,9 @@ extends Node
 enum ResourceType { NONE, WHEAT, METAL, WOOD, GOLD }
 
 var CityInventory : Inventory = Inventory.new()
+@onready var Caravan1 : Caravan = Caravan.new()
+@onready var Caravan2 : Caravan = Caravan.new()
+@onready var Caravan3 : Caravan = Caravan.new()
 
 var CityState =  0
 
@@ -76,7 +79,11 @@ func set_in_path_placement_mode(in_mode: bool):
 		Input.set_custom_mouse_cursor(default_pointer, Input.CURSOR_ARROW, Vector2(12, 12))
 
 func _ready():
+	#Keep
 	CityInventory.initInv()
+	Caravan1.isActive = true
+	
+	#Remove Below
 	var temp : Inventory = Inventory.new()
 	temp.setItems([ResourceType.WOOD, ResourceType.GOLD, ResourceType.METAL], [1, -1, 3])
 	
