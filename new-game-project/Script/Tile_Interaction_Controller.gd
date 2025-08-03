@@ -66,10 +66,13 @@ func _physics_process(delta: float) -> void:
 			GlobalSettings.Caravan1.line_2d = GlobalSettings.Caravan1.get_child(1)
 			for e in get_tree().get_nodes_in_group("Caravan"):
 					if e.name == "Caravan1":
+						e.line_2d.clear_points()
 						e.line_2d.add_point(Vector2(128, 128))
 					if e.name == "Caravan2":
+						e.line_2d.clear_points()
 						e.line_2d.add_point(Vector2(128, 128))
 					if e.name == "Caravan3":
+						e.line_2d.clear_points()
 						e.line_2d.add_point(Vector2(128, 128))
 			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
 		else:
@@ -108,6 +111,7 @@ func _physics_process(delta: float) -> void:
 					Caravans[2].definePath()
 					Caravans[2].pathHexArray = GlobalSettings.caravanPathBuiler
 				#Caravans[0].getItemsFromLoop()
+				#Caravans[0].deposit()
 				GlobalSettings.caravanIndex = 0
 				GlobalSettings.caravanPathBuiler = []
 			else:
