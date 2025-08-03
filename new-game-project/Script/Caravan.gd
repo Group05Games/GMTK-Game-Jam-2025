@@ -9,8 +9,6 @@ class_name Caravan
 
 var CaravanInventory : Inventory = Inventory.new()
 var isActive : bool = false
-var pathCurve : Curve2D = null
-var pathHexArray : Array = []
 
 func _ready():
 	CaravanInventory.initInv()
@@ -25,7 +23,6 @@ func depositAsGold():
 	CaravanInventory.emptyInventory()
 
 func definePath():
-	#Tile_Interaction_Controller
 	#map.cube_neighbors()
 	#While active should:
 	#Take user left clicks on neighboring nodes
@@ -34,4 +31,5 @@ func definePath():
 	#Left click on already selected node should deselect that node and all child nodes
 	#If the head of the list and the tail of he list are the same node, we have completed the loop.
 	#  #Save the path running between all points
-	path.curve = pathCurve
+	
+	pass

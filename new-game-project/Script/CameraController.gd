@@ -84,16 +84,12 @@ func _on_place_paths_pressed():
 	path_select_panel.visible = !path_select_panel.visible
 
 func _on_path_1_pressed():
-	GlobalSettings.caravanIndex = 1
-	GlobalSettings.set_in_path_placement_mode(true)
-	path_select_panel.visible = false
+	#var path = recordPath()
+	#GlobalSettings.path1 = path
+	pass # Replace with function body.
 
 func _on_path_2_pressed():
-	GlobalSettings.caravanIndex = 2
-	GlobalSettings.set_in_path_placement_mode(true)
-	path_select_panel.visible = false
+	pass # Replace with function body.
 
 func _on_path_3_pressed():
-	GlobalSettings.caravanIndex = 3
-	GlobalSettings.set_in_path_placement_mode(true)
-	path_select_panel.visible = false
+	pass # Replace with function body.

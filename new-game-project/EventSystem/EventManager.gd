@@ -117,13 +117,9 @@ func _open_event_popup(ev: GameEvent, tile_ref: Dictionary) -> void:
 	popup.setup(ev, tile_ref)
 	popup_parent.add_child(popup)
 	popup.visible = true
-	
-	   # Give it the tile’s world anchor so it can follow the camera
-	if popup.has_method("set_world_anchor"):
-		popup.set_world_anchor(tile_ref["world_pos"])
 
-	## Center the popup near the tile on screen
-	#if popup.has_method("place_on_screen"):
-		#var screen_pos = _world_to_screen(tile_ref["world_pos"])
-		#popup.place_on_screen(screen_pos)
+	# Center the popup near the tile on screen
+	if popup.has_method("place_on_screen"):
+		var screen_pos = _world_to_screen(tile_ref["world_pos"])
+		popup.place_on_screen(screen_pos)
 		

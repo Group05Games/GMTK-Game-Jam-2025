@@ -19,7 +19,7 @@ func _ready() -> void:
 	EventManager.request_tile_event_for_cube(map, result, tile_info, self)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true && !GlobalSettings.InPathPlacementMode:
+	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true:
 		MousePress = get_global_mouse_position() #Where is mouse cursor
 		var result = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
 		var clicked_tile_position = map.cube_to_map(result)
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		handle_tile_placements(search, clicked_tile_position)
 		
 	
-	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && !GlobalSettings.InPathPlacementMode:
+	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true:
 		MousePress = get_global_mouse_position()
 		var result = map.local_to_cube(MousePress)
 		#print("Clicked " , MousePress , " and found: " , result)
@@ -51,86 +51,6 @@ func _physics_process(delta: float) -> void:
 			GlobalSignalBusController.SendMapInformation.emit(self, search)
 		else:
 			print("invalid tile")
-		
-	if Input.is_action_just_pressed("Mouse_1") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
-		MousePress = get_global_mouse_position() #Where is mouse cursor
-		var result : Vector3i = map.local_to_cube(MousePress)  #Converting cursor space into Hex Space
-		var initialPoint : Vector3i
-		
-		if GlobalSettings.caravanPathBuiler == []: 
-			initialPoint = map.map_to_cube(Vector2i(0,0))
-			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
-		else:
-			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
-		
-		if result in map.cube_neighbors(initialPoint):
-			if result == map.map_to_cube(Vector2i(0,0)):
-				print("Complete Loop")
-				GlobalSettings.set_in_path_placement_mode(false)
-				
-				#Path builder array to curve2d points
-				var curveBuilder = []
-				for point in GlobalSettings.caravanPathBuiler:
-					curveBuilder.append(map.cube_to_local(point))
-				var curve : Curve2D = Curve2D.new()
-				for point in curveBuilder:
-					curve.add_point(point)
-				
-				if GlobalSettings.caravanIndex == 1:
-					GlobalSettings.Caravan1.pathCurve = curve
-					GlobalSettings.Caravan1.definePath()
-					GlobalSettings.Caravan1.pathHexArray = GlobalSettings.caravanPathBuiler
-				if GlobalSettings.caravanIndex == 2:
-					GlobalSettings.Caravan2.pathCurve = curve
-					GlobalSettings.Caravan2.definePath()
-					GlobalSettings.Caravan2.pathHexArray = GlobalSettings.caravanPathBuiler
-				if GlobalSettings.caravanIndex == 3:
-					GlobalSettings.Caravan3.pathCurve = curve
-					GlobalSettings.Caravan3.definePath()
-					GlobalSettings.Caravan3.pathHexArray = GlobalSettings.caravanPathBuiler
-				
-				GlobalSettings.caravanIndex = 0
-				GlobalSettings.caravanPathBuiler = []
-			else:
-				#Not yet in our path, add it if we have enough moves
-				if result not in GlobalSettings.caravanPathBuiler:
-					if GlobalSettings.caravanPathBuiler.size() < GlobalSettings.caravanMoveLimit + 1:
-						print("adding new space to path" + str(result))
-						GlobalSettings.caravanPathBuiler.append(result)
-						print(str(GlobalSettings.caravanPathBuiler))
-				#In our path, remove all nodes after this item
-				else:
-					#Find result in path builder
-					var end : int = GlobalSettings.caravanPathBuiler.find(result)
-					#Remove all elements after but excluding result
-					var i = 0
-					var temp = []
-					while i < end + 1:
-						temp.append(GlobalSettings.caravanPathBuiler[i])
-						i += 1;
-					
-					if temp.is_empty():
-						temp.append(map.map_to_cube(Vector2i(0,0)))
-					GlobalSettings.caravanPathBuiler = temp
-					print("Removed elements. New Array: " + str(temp))
-		#Not a neighbor but in our path, remove all nodes after this
-		elif result in GlobalSettings.caravanPathBuiler:
-			#Find result in path builder
-			var end : int = GlobalSettings.caravanPathBuiler.find(result)
-			#Remove all elements after but excluding result
-			var i = 0
-			var temp = []
-			while i < end + 1:
-				temp.append(GlobalSettings.caravanPathBuiler[i])
-				i += 1;
-			if temp.is_empty():
-					temp.append(map.map_to_cube(Vector2i(0,0)))
-			GlobalSettings.caravanPathBuiler = temp
-			print("Removed elements. New Array: " + str(temp))
-	
-	if Input.is_action_just_pressed("Mouse_2") && GlobalSettings.InMenu != true && GlobalSettings.InPathPlacementMode:
-		GlobalSettings.set_in_path_placement_mode(false)
-		GlobalSettings.caravanPathBuiler = []
 
 # Handle tile placements
 func handle_tile_placements(clicked_tile_id, clicked_tile_position) -> void:
