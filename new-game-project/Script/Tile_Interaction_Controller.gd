@@ -64,25 +64,32 @@ func _physics_process(delta: float) -> void:
 			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
 		
 		if result in map.cube_neighbors(initialPoint):
-			if result not in GlobalSettings.caravanPathBuiler:
-				if GlobalSettings.caravanPathBuiler.size() < GlobalSettings.caravanMoveLimit + 1:
-					print("adding new space to path" + str(result))
-					GlobalSettings.caravanPathBuiler.append(result)
-					print(str(GlobalSettings.caravanPathBuiler))
+			if result == map.map_to_cube(Vector2i(0,0)):
+				print("Complete Loop")
+				GlobalSettings.set_in_path_placement_mode(false)
 			else:
-				#Find result in path builder
-				var end : int = GlobalSettings.caravanPathBuiler.find(result)
-				#Remove all elements after but excluding result
-				var i = 0
-				var temp = []
-				while i < end + 1:
-					temp.append(GlobalSettings.caravanPathBuiler[i])
-					i += 1;
-				
-				if temp.is_empty():
-					temp.append(map.map_to_cube(Vector2i(0,0)))
-				GlobalSettings.caravanPathBuiler = temp
-				print("Removed elements. New Array: " + str(temp))
+				#Not yet in our path, add it if we have enough moves
+				if result not in GlobalSettings.caravanPathBuiler:
+					if GlobalSettings.caravanPathBuiler.size() < GlobalSettings.caravanMoveLimit + 1:
+						print("adding new space to path" + str(result))
+						GlobalSettings.caravanPathBuiler.append(result)
+						print(str(GlobalSettings.caravanPathBuiler))
+				#In our path, remove all nodes after this item
+				else:
+					#Find result in path builder
+					var end : int = GlobalSettings.caravanPathBuiler.find(result)
+					#Remove all elements after but excluding result
+					var i = 0
+					var temp = []
+					while i < end + 1:
+						temp.append(GlobalSettings.caravanPathBuiler[i])
+						i += 1;
+					
+					if temp.is_empty():
+						temp.append(map.map_to_cube(Vector2i(0,0)))
+					GlobalSettings.caravanPathBuiler = temp
+					print("Removed elements. New Array: " + str(temp))
+		#Not a neighbor but in our path, remove all nodes after this
 		elif result in GlobalSettings.caravanPathBuiler:
 			#Find result in path builder
 			var end : int = GlobalSettings.caravanPathBuiler.find(result)
