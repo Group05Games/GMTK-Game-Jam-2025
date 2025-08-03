@@ -1,6 +1,5 @@
-extends Script
+extends Resource
+class_name PayBanditsEffect
 
-func apply(tile):
-	EventManager.player_money -= 100
-	# GlobalSettings.CityInventory.addArray([GlobalSettings.ResourceType.GOLD], [-100])
-	print("Paid off the bandits!")
+func apply(tile_ref, em) -> void:
+	em.player_money -= 100

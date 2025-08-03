@@ -1,5 +1,5 @@
-extends Script
+extends Resource
+class_name WealthyPlayerTrigger
 
-func evaluate(tile, caravan):
-	return EventManager.player_money >= 300
-	# return GlobalSettings.CityInventory.inventory[ResourceType.GOLD] >= 300
+func evaluate(tile_ref, caravan, em) -> bool:
+	return em.player_money >= 300

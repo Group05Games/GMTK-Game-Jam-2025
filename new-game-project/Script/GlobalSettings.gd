@@ -26,9 +26,16 @@ var TileDictionary : Dictionary = {
 	"7" : {"Name" : "City", "Move Cost" : 1, "Resource" : ResourceType.NONE},
 	"8" : {"Name" : "Barren", "Move Cost" : 1, "Resource" : ResourceType.NONE},
 	"9" : {"Name" : "Town", "Move Cost" : 1, "Resource" : ResourceType.NONE},
-	"10" : {"Name" : "Sawmill", "Move Cost" : 1, "Resource" : ResourceType.WOOD, "NeighborBonuses": {"1": 1}},
+	"10": {"Name" : "Sawmill", "Move Cost" : 1, "Resource" : ResourceType.WOOD, "NeighborBonuses": {"1": 1}},
 	"11": {"Name" : "Farm", "Move Cost": 1, "Resource": ResourceType.WHEAT, "NeighborBonuses": {"0": 1}}
 }
+
+func get_def(id_str: String) -> Dictionary:
+	return TileDictionary.get(id_str, {})
+
+func get_tile_name(id_str: String) -> String:
+	var d := get_def(id_str)
+	return d.get("Name","")
 
 var ScrollSpeed : float = 0.2
 var MoveSpeed : float = 1000

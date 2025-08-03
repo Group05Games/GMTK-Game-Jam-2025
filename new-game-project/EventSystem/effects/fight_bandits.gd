@@ -1,4 +1,5 @@
-extends Script
+extends Resource
+class_name FightBanditsEffect
 
-func apply(tile):
-	print("You fought the bandits! Outcome TBD")
+func apply(tile_ref, em) -> void:
+	print("Fought bandits at:", tile_ref)
