@@ -2,6 +2,7 @@ extends ProgressBar
 
 @onready var day_tracker: Timer = $DayTracker
 @onready var date: RichTextLabel = $"../Date"
+@onready var up_keep: RichTextLabel = $"../UpKeep"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +11,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	value = (day_tracker.wait_time - day_tracker.time_left)
+	up_keep.text = "Upkeep: %s" % [GlobalSettings.UpkeepCost]
 	#print(value)
 
 

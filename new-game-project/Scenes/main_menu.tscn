@@ -1,13 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://clsvi4r7521vx"]
+[gd_scene load_steps=14 format=3 uid="uid://clsvi4r7521vx"]
 
 [ext_resource type="Script" uid="uid://duova4pchps62" path="res://Script/Main_Menu_Controller.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://bxcoa8qiwgsy4" path="res://Imports/All Roads Lead To Home.png" id="1_48xlc"]
+[ext_resource type="AudioStream" uid="uid://ckopeamqn368i" path="res://Audio/Vibing Over Venus.mp3" id="2_t1dhk"]
+[ext_resource type="AudioStream" uid="uid://bxvnq3l81d35w" path="res://Audio/Almost New.mp3" id="3_5egv6"]
 [ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="3_yhxw7"]
 [ext_resource type="Script" uid="uid://bn4418bjysxsc" path="res://Script/Volume_Slider.gd" id="4_ce3w2"]
+[ext_resource type="AudioStream" uid="uid://cokxbf64p8d7t" path="res://Audio/Evening.mp3" id="4_vtepg"]
+[ext_resource type="AudioStream" uid="uid://ywiypjyb4xdf" path="res://Audio/Morning.mp3" id="5_8dnnj"]
 [ext_resource type="Theme" uid="uid://ddwcownhfnpwi" path="res://Assets/Credits_Theme.tres" id="5_n45e2"]
 [ext_resource type="Theme" uid="uid://ojh06q2lrqd" path="res://Assets/SoundSettings Theme.tres" id="5_yhxw7"]
 [ext_resource type="Script" uid="uid://bex05e4bxbyc7" path="res://Script/MapSpeedSliders.gd" id="7_trj04"]
 [ext_resource type="Script" uid="uid://c0840n7vhiaus" path="res://Script/ShiftMapSpeedSliders.gd" id="8_16hvj"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_m3bi6"]
+shuffle = true
+stream_count = 4
+stream_0 = ExtResource("2_t1dhk")
+stream_1 = ExtResource("3_5egv6")
+stream_2 = ExtResource("4_vtepg")
+stream_3 = ExtResource("5_8dnnj")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,6 +32,12 @@ script = ExtResource("1_1ehe0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = SubResource("AudioStreamPlaylist_m3bi6")
+volume_db = -23.706
+autoplay = true
+bus = &"Music"
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -10
@@ -81,10 +99,24 @@ layout_mode = 0
 offset_right = 573.0
 offset_bottom = 336.0
 text = "Art
-Person 1
-Person 2
-Person 3
-Person 4"
+B + B + R + J +K
+
+Music:
+\"Vibing Over Venus\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Morning\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Evening\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Almost New\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/"
 horizontal_alignment = 1
 
 [node name="PauseDim" type="ColorRect" parent="."]
@@ -132,6 +164,9 @@ horizontal_alignment = 1
 
 [node name="VolumeSliderMaster" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.001
 script = ExtResource("4_ce3w2")
 bus_Name = "Master"
 
@@ -142,6 +177,9 @@ horizontal_alignment = 1
 
 [node name="VolumeSliderMusic" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.001
 script = ExtResource("4_ce3w2")
 bus_Name = "Music"
 
@@ -152,6 +190,9 @@ horizontal_alignment = 1
 
 [node name="VolumeSliderSound" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.001
 script = ExtResource("4_ce3w2")
 bus_Name = "Sound"
 

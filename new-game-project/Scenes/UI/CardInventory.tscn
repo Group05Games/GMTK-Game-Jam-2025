@@ -67,10 +67,16 @@ theme = SubResource("Theme_xtco3")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="MenuPanel/DeselectButton"]
-layout_mode = 0
-offset_left = 30.8022
-offset_top = 49.0
-offset_right = 96.8022
-offset_bottom = 72.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.203
+anchor_top = 0.309
+anchor_right = 0.8
+anchor_bottom = 0.714362
+offset_left = 22.9836
+offset_top = -1.22523
+offset_right = 65.9901
+offset_bottom = -44.1132
 rotation = 1.51844
 text = "Deselect"
+metadata/_edit_use_anchors_ = true

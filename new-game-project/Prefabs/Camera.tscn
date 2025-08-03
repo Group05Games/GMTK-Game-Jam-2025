@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
 [ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
-[ext_resource type="PackedScene" path="res://Prefabs/upgrade_tree.tscn" id="3_067mb"]
+[ext_resource type="PackedScene" uid="uid://dwjmbtbdqohtp" path="res://Prefabs/upgrade_tree.tscn" id="3_067mb"]
 [ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
-[ext_resource type="Theme" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
-[ext_resource type="Script" path="res://Script/Stats_Controller.gd" id="4_twoia"]
-[ext_resource type="PackedScene" path="res://Prefabs/world_timer.tscn" id="7_rfh4w"]
+[ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
+[ext_resource type="Script" uid="uid://d0xdcg0uqxfo2" path="res://Script/Stats_Controller.gd" id="4_twoia"]
+[ext_resource type="PackedScene" uid="uid://b45opsv2gvlwe" path="res://Prefabs/world_timer.tscn" id="7_rfh4w"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
@@ -135,6 +135,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="UpgradeTree" parent="UpgradesPanel" instance=ExtResource("3_067mb")]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.14218
+anchor_top = -0.0816697
+anchor_right = 1.23602
+anchor_bottom = 1.41924
+offset_left = 0.0
+offset_top = 0.0
+offset_right = -0.00012207
+metadata/_edit_use_anchors_ = true
 
 [node name="StatsPanel" type="Control" parent="."]
 layout_mode = 3
