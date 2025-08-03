@@ -1,5 +1,6 @@
 extends Node
 
+@onready var map : HexagonTileMapLayer = get_tree().get_first_node_in_group("TileMap")
 @onready var path = $Path2D2
 @onready var path_follow = $Path2D2/PathFollow2D
 @onready var caravan = $Path2D2/PathFollow2D/Caravan
@@ -20,6 +21,7 @@ func depositAsGold():
 	CaravanInventory.emptyInventory()
 
 func definePath():
+	#map.cube_neighbors()
 	#While active should:
 	#Take user left clicks on neighboring nodes
 	#Add node to the path if it is not already part of the path

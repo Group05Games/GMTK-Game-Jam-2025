@@ -36,6 +36,7 @@ var ShiftMoveSpeed : float = 2.0
 var MaxZoom : float = 2.0
 var MinZoom : float = 0.1
 var InMenu : bool = false
+var InPathPlacementMode = false
 var bus_index: int
 var day : int
 
