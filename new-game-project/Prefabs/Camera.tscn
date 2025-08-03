@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7kdwob6oncjc"]
+[gd_scene load_steps=8 format=3 uid="uid://b7kdwob6oncjc"]
 
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
 [ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
+[ext_resource type="PackedScene" uid="uid://dwjmbtbdqohtp" path="res://Prefabs/upgrade_tree.tscn" id="3_067mb"]
 [ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
 [ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
 [ext_resource type="Script" uid="uid://d0xdcg0uqxfo2" path="res://Script/Stats_Controller.gd" id="4_twoia"]
+[ext_resource type="PackedScene" uid="uid://b45opsv2gvlwe" path="res://Prefabs/world_timer.tscn" id="7_rfh4w"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
@@ -66,20 +68,14 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1139.0
-offset_top = -442.0
-offset_right = -84.0
-offset_bottom = 109.0
+offset_left = -573.0
+offset_top = -296.0
+offset_right = 482.0
+offset_bottom = 255.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="UpgradesPanel"]
+[node name="UpgradeTree" parent="UpgradesPanel" instance=ExtResource("3_067mb")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.348815
-anchor_top = 0.0326679
-anchor_right = 1.88626
-anchor_bottom = 1.74773
-metadata/_edit_use_anchors_ = true
 
 [node name="StatsPanel" type="Control" parent="."]
 layout_mode = 3
@@ -123,16 +119,7 @@ text = "Wood : 0"
 layout_mode = 2
 text = "Caravan 0/0"
 
-[node name="GiveMeRandomResource" type="Button" parent="StatsPanel"]
-layout_mode = 0
-offset_left = 314.0
-offset_top = 417.0
-offset_right = 1016.0
-offset_bottom = 568.0
-theme = ExtResource("4_s857k")
-text = "Random Item Get"
-
-[node name="PauseMenu" parent="StatsPanel" instance=ExtResource("3_yp6pr")]
+[node name="PauseMenu" parent="." instance=ExtResource("3_yp6pr")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0
@@ -146,8 +133,24 @@ grow_vertical = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="GiveMeRandomResource" type="Button" parent="."]
+visible = false
+z_index = -1
+offset_left = 314.0
+offset_top = 417.0
+offset_right = 1016.0
+offset_bottom = 568.0
+theme = ExtResource("4_s857k")
+text = "Random Item Get"
+
+[node name="WorldTimer" parent="." instance=ExtResource("7_rfh4w")]
+offset_left = 171.0
+offset_top = -619.0
+offset_right = 171.0
+offset_bottom = -619.0
+
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="LogPanel/Log" to="." method="_on_log_pressed"]
-[connection signal="pressed" from="StatsPanel/GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]
+[connection signal="pressed" from="GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]

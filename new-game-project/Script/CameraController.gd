@@ -60,7 +60,7 @@ func _on_upgrades_pressed() -> void:
 func _on_give_me_random_resource_pressed() -> void:
 	var rng = randi_range(1,4)
 	
-	#GlobalSettings.CityInventory.addArray([GlobalSettings.ResourceType.vrng, GlobalSettings.ResourceType[str(rng)]], [2, 1])
+	GlobalSettings.CityInventory.addArray([GlobalSettings.ResourceType.values()[rng], GlobalSettings.ResourceType.values()[rng]], [2, 1])
 	
 func _on_log_pressed() -> void:
 	if LogShow == true:

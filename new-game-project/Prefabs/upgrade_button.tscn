@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw6jo4mssfmxm"]
+
+[ext_resource type="Texture2D" uid="uid://d10bggnhrcdd6" path="res://Imports/Illustration2.png" id="1_kkad0"]
+[ext_resource type="Script" uid="uid://dkip1yjcjisrv" path="res://Script/upgrade_button.gd" id="2_itowg"]
+
+[node name="UpgradeButton" type="TextureButton"]
+anchors_preset = -1
+anchor_left = -0.00868056
+anchor_top = -0.0185185
+anchor_right = 0.135417
+anchor_bottom = 0.20679
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("1_kkad0")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_itowg")
+maxLevel = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0524194
+anchor_top = -0.0762332
+anchor_right = 1.08065
+anchor_bottom = 1.09865
+offset_bottom = -1.52588e-05
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "0/1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+width = 6.0
+default_color = Color(0.351563, 0.351563, 0.351563, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
