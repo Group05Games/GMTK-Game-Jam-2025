@@ -33,12 +33,13 @@ func setup(event, tile):
 	tile_ref = tile
 	
 	TitleLbl.text = event.name
+	DescriptionLbl.text = event.description
 	
 	var tex: Texture2D = null
 	if event.has_method("get"): # if it's a Resource with exported fields
-		tex = event.get("icon") if event.get("icon") is Texture2D else null
+		tex = event.get("art") if event.get("art") is Texture2D else null
 	else:
-		tex = event.icon if event.icon is Texture2D else null
+		tex = event.art if event.art is Texture2D else null
 		
 	ArtLbl.texture = tex
 	ArtLbl.visible = tex != null
@@ -69,7 +70,8 @@ func place_on_screen(screen_pos: Vector2) -> void:
 	if panel.custom_minimum_size == Vector2.ZERO:
 		panel.custom_minimum_size = Vector2(420, 260)
 	
-	panel.size = panel.get_combined_minimum_size()
+	#panel.size = panel.get_combined_minimum_size()
+	panel.size = Vector2(1000, 600)
 	
 	panel.position = screen_pos - panel.size * 0.5
 	_clamp_panel_to_viewport(panel)
@@ -80,8 +82,6 @@ func _clamp_panel_to_viewport(panel: Panel) -> void:
 	global_position.x = clamp(global_position.x, 8.0, vp.x - size.x - 8.0)
 	global_position.y = clamp(global_position.y, 8.0, vp.y - size.y - 8.0)
 
-func set_world_anchor(p: Vector2) -> void:
-	_world_anchor = p
 
 # --- OPTION HANDLERS ----------------------------------------------------------
 
@@ -91,18 +91,3 @@ func _on_option_selected(option: OptionData) -> void:
 	if eff and eff.has_method("apply"):
 		eff.apply(tile_ref, EventManager)  # pass EventManager for game state access
 	queue_free()
-	
-func _process(_dt: float) -> void:
-	if _world_anchor != Vector2.ZERO:
-		var screen_pos := get_viewport().get_canvas_transform() * _world_anchor
-		_place_panel_at(screen_pos)
-		
-func _place_panel_at(screen_pos: Vector2) -> void:
-	# If your root is Full Rect, position the inner Panel:
-	var panel = WindowLbl
-	if panel.custom_minimum_size == Vector2.ZERO:
-		panel.custom_minimum_size = Vector2(420, 260) # tweak
-	if panel.size == Vector2.ZERO:
-		panel.size = panel.get_combined_minimum_size()
-	panel.position = screen_pos - panel.size * 0.5
-	_clamp_panel_to_viewport(panel)

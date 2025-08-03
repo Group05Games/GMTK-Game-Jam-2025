@@ -44,6 +44,7 @@ scale = Vector2(1.25, 1.25)
 [node name="TileInformationDisplay" parent="." instance=ExtResource("7_jw32o")]
 
 [node name="Popups" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -828.0

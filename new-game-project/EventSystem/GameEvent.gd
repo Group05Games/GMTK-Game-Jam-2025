@@ -6,5 +6,6 @@ class_name GameEvent
 @export var category: String # "global" or "tile"
 @export var valid_tile_types: Array[String]
 @export var trigger_script: Script
-@export var icon: Texture
+@export var art: Texture
+@export var marker_icon: Texture2D = null
 @export var options: Array[OptionData]

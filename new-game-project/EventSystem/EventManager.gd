@@ -10,7 +10,7 @@ var player_money: int = 500
 
 # ─── Scene references (adjust paths if your scene differs) ────────────────────
 var world_root: Node
-var popup_parent: Control
+var popup_parent: Node
 
 # ─── Scenes ───────────────────────────────────────────────────────────────────
 var _marker_scene := preload("res://EventSystem/ui/EventMarker.tscn")
@@ -67,7 +67,7 @@ func request_tile_event_for_cube(hex_layer: Node, cube: Vector3i, tile_info: Dic
 	# Since cube_to_local == world pos in your setup, use it directly.
 	var world_pos: Vector2 = hex_layer.cube_to_local(cube)
 	world_root = get_tree().root.get_node("TileMapController")
-	popup_parent = get_tree().root.get_node("TileMapController/Popups")
+	popup_parent = get_tree().root.get_node("TileMapController/Camera2D")
 
 	var tile_ref := {
 		"cube": cube,
@@ -105,25 +105,22 @@ func _random_pick(events: Array[GameEvent]) -> GameEvent:
 func _spawn_marker_for_event(ev: GameEvent, tile_ref: Dictionary) -> void:
 	var marker := _marker_scene.instantiate()
 	marker.setup(ev, tile_ref, tile_ref["world_pos"])
+	
+	# Pass an icon choice to the marker
+	var tex = ev.marker_icon
+	if tex and marker.has_method("set_icon_texture"):
+		marker.set_icon_texture(tex)
+	
 	marker.marker_clicked.connect(_open_event_popup)
 	world_root.add_child(marker)
-
-func _world_to_screen(p: Vector2) -> Vector2:
-	var xf: Transform2D = get_viewport().get_canvas_transform()
-	return xf * p
 
 func _open_event_popup(ev: GameEvent, tile_ref: Dictionary) -> void:
 	var popup := _popup_scene.instantiate()
 	popup.setup(ev, tile_ref)
 	popup_parent.add_child(popup)
 	popup.visible = true
-	
-	   # Give it the tile’s world anchor so it can follow the camera
-	if popup.has_method("set_world_anchor"):
-		popup.set_world_anchor(tile_ref["world_pos"])
 
-	## Center the popup near the tile on screen
-	#if popup.has_method("place_on_screen"):
-		#var screen_pos = _world_to_screen(tile_ref["world_pos"])
-		#popup.place_on_screen(screen_pos)
+	# Center the popup near the tile on screen
+	if popup.has_method("place_on_screen"):
+		popup.place_on_screen(Vector2(0,0))
 		
