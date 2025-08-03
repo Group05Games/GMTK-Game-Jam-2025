@@ -59,6 +59,7 @@ func set_in_tile_placement_mode(in_mode: bool):
 		return
 	self.InTilePlacementMode = in_mode
 	if(in_mode):
+		set_in_path_placement_mode(false) # Can't be in both modes at once
 		Input.set_custom_mouse_cursor(tile_placement_pointer, Input.CURSOR_ARROW, Vector2(16, 16))
 	else:
 		Input.set_custom_mouse_cursor(default_pointer, Input.CURSOR_ARROW, Vector2(12, 12))
@@ -69,6 +70,7 @@ func set_in_path_placement_mode(in_mode: bool):
 		return
 	self.InPathPlacementMode = in_mode
 	if(in_mode):
+		set_in_tile_placement_mode(false) # Can't be in both modes at once
 		Input.set_custom_mouse_cursor(path_planning_pointer, Input.CURSOR_ARROW, Vector2(16, 28))
 	else:
 		Input.set_custom_mouse_cursor(default_pointer, Input.CURSOR_ARROW, Vector2(12, 12))
