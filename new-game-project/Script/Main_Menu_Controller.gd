@@ -5,6 +5,7 @@ extends Control
 
 @onready var SoundMenu: MarginContainer = $SoundMenuContainer
 @onready var Credits: Panel = $Credits
+@onready var pause_dim: ColorRect = $PauseDim
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +18,7 @@ func _on_start_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	MainButtons.visible = !MainButtons.visible
+	pause_dim.visible = !pause_dim.visible
 	SoundMenu.visible = !SoundMenu.visible
 
 
@@ -26,4 +28,5 @@ func _on_credits_pressed() -> void:
 
 func _on_go_back_pressed() -> void:
 	MainButtons.visible = !MainButtons.visible
+	pause_dim.visible = !pause_dim.visible
 	SoundMenu.visible = !SoundMenu.visible

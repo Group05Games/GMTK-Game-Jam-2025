@@ -4,6 +4,7 @@ var paused = false
 @onready var pause_menu = get_tree().get_first_node_in_group("PauseMenu")
 
 func PauseMenu():
+	pause_menu = get_tree().get_first_node_in_group("PauseMenu")
 	if paused:
 		GlobalSettings.InMenu = false
 		pause_menu.pause_menu_container.visible = true

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b6yr7h2iwq52" path="res://Script/CameraController.gd" id="1_regp8"]
 [ext_resource type="Theme" uid="uid://ccoc373wmcfuo" path="res://Assets/Stats_Theme.tres" id="2_yp6pr"]
 [ext_resource type="PackedScene" uid="uid://muge8i3t54oq" path="res://Prefabs/Pause_Menu.tscn" id="3_yp6pr"]
+[ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="4_s857k"]
 [ext_resource type="Script" uid="uid://d0xdcg0uqxfo2" path="res://Script/Stats_Controller.gd" id="4_twoia"]
-[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="5_s857k"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
@@ -45,26 +45,22 @@ size_flags_horizontal = 3
 text = "Menu"
 
 [node name="LogPanel" type="Panel" parent="."]
-offset_left = 908.0
+offset_left = 550.0
 offset_top = -645.0
-offset_right = 1146.0
+offset_right = 1150.0
 offset_bottom = 5.0
 theme = ExtResource("2_yp6pr")
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_yp6pr")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -1163.0
-offset_top = -659.0
-offset_right = 1170.0
-offset_bottom = 656.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Log" type="Button" parent="LogPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 590.0
+offset_right = 595.0
+offset_bottom = 641.0
+theme_override_font_sizes/font_size = 32
+text = "Hide"
+metadata/_edit_use_anchors_ = true
 
 [node name="UpgradesPanel" type="Control" parent="."]
 visible = false
@@ -129,14 +125,29 @@ text = "Caravan 0/0"
 
 [node name="GiveMeRandomResource" type="Button" parent="StatsPanel"]
 layout_mode = 0
-offset_left = 578.0
-offset_top = 423.0
-offset_right = 1079.0
-offset_bottom = 574.0
-theme = ExtResource("5_s857k")
+offset_left = 314.0
+offset_top = 417.0
+offset_right = 1016.0
+offset_bottom = 568.0
+theme = ExtResource("4_s857k")
 text = "Random Item Get"
+
+[node name="PauseMenu" parent="StatsPanel" instance=ExtResource("3_yp6pr")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -1163.0
+offset_top = -659.0
+offset_right = 1170.0
+offset_bottom = 656.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Stats" to="." method="_on_stats_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="LogPanel/Log" to="." method="_on_log_pressed"]
 [connection signal="pressed" from="StatsPanel/GiveMeRandomResource" to="." method="_on_give_me_random_resource_pressed"]

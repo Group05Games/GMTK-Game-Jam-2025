@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://clsvi4r7521vx"]
+[gd_scene load_steps=9 format=3 uid="uid://clsvi4r7521vx"]
 
 [ext_resource type="Script" uid="uid://duova4pchps62" path="res://Script/Main_Menu_Controller.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://bxcoa8qiwgsy4" path="res://Imports/All Roads Lead To Home.png" id="1_48xlc"]
-[ext_resource type="Theme" uid="uid://bnhtrws5r2en4" path="res://Assets/Menu_Theme.tres" id="2_1ehe0"]
+[ext_resource type="Theme" uid="uid://ccg6e0fetg1ag" path="res://Assets/Main_Menu_Theme.tres" id="3_yhxw7"]
 [ext_resource type="Script" uid="uid://bn4418bjysxsc" path="res://Script/Volume_Slider.gd" id="4_ce3w2"]
 [ext_resource type="Theme" uid="uid://ddwcownhfnpwi" path="res://Assets/Credits_Theme.tres" id="5_n45e2"]
+[ext_resource type="Theme" uid="uid://ojh06q2lrqd" path="res://Assets/SoundSettings Theme.tres" id="5_yhxw7"]
+[ext_resource type="Script" uid="uid://bex05e4bxbyc7" path="res://Script/MapSpeedSliders.gd" id="7_trj04"]
+[ext_resource type="Script" uid="uid://c0840n7vhiaus" path="res://Script/ShiftMapSpeedSliders.gd" id="8_16hvj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,21 +18,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ehe0")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
 [node name="Background" type="TextureRect" parent="."]
 z_index = -10
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -1143.0
+offset_top = -634.0
+offset_right = 2682.0
+offset_bottom = 1503.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_48xlc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00694444
-anchor_top = 0.479938
-anchor_right = 0.25
-anchor_bottom = 1.00772
+anchor_left = -0.985243
+anchor_top = 0.16821
+anchor_right = -0.449653
+anchor_bottom = 0.978395
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_left = 15
@@ -40,7 +48,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme = ExtResource("2_1ehe0")
+theme = ExtResource("3_yhxw7")
 theme_override_constants/separation = 15
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -55,26 +63,67 @@ text = "Options"
 layout_mode = 2
 text = "Credits"
 
+[node name="Credits" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25217
+anchor_top = 0.237654
+anchor_right = 0.74783
+anchor_bottom = 0.762346
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n45e2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_right = 573.0
+offset_bottom = 336.0
+text = "Art
+Person 1
+Person 2
+Person 3
+Person 4"
+horizontal_alignment = 1
+
+[node name="PauseDim" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -1153.0
+offset_top = -642.0
+offset_right = 1160.0
+offset_bottom = 641.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="SoundMenuContainer" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0998264
-anchor_top = 0.156636
-anchor_right = 0.900174
-anchor_bottom = 0.843364
+anchor_left = -0.90191
+anchor_top = -0.841049
+anchor_right = 0.84809
+anchor_bottom = 0.856481
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_yhxw7")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
 metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="SoundMenuContainer"]
-z_index = -4
-layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SoundMenuContainer"]
 layout_mode = 2
-theme = ExtResource("2_1ehe0")
-theme_override_constants/separation = 17
+theme = ExtResource("3_yhxw7")
+theme_override_constants/separation = 23
+
+[node name="SoundsTitle" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sounds"
+horizontal_alignment = 1
 
 [node name="Master" type="Label" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,38 +153,45 @@ horizontal_alignment = 1
 [node name="VolumeSliderSound" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("4_ce3w2")
-bus_Name = "Sounds"
+bus_Name = "Sound"
+
+[node name="Controls" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+Controls"
+horizontal_alignment = 1
+
+[node name="MapSpeed" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Map Movement Speed"
+
+[node name="MoveSlider" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 100.0
+max_value = 2000.0
+step = 100.0
+value = 1000.0
+script = ExtResource("7_trj04")
+
+[node name="MapSpeed2" type="Label" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shift Speed Multiplier"
+
+[node name="ShiftMoveSlider" type="HSlider" parent="SoundMenuContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 3.0
+step = 0.1
+value = 2.0
+script = ExtResource("8_16hvj")
 
 [node name="GoBack" type="Button" parent="SoundMenuContainer/VBoxContainer"]
-z_index = 1
 layout_mode = 2
 text = "Go Back"
-
-[node name="Credits" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25217
-anchor_top = 0.237654
-anchor_right = 0.74783
-anchor_bottom = 0.762346
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("5_n45e2")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Credits"]
-layout_mode = 0
-offset_right = 573.0
-offset_bottom = 336.0
-text = "Art
-Person 1
-Person 2
-Person 3
-Person 4"
-horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="drag_ended" from="SoundMenuContainer/VBoxContainer/MoveSlider" to="SoundMenuContainer/VBoxContainer/MoveSlider" method="_on_drag_ended"]
+[connection signal="drag_ended" from="SoundMenuContainer/VBoxContainer/ShiftMoveSlider" to="SoundMenuContainer/VBoxContainer/ShiftMoveSlider" method="_on_drag_ended"]
 [connection signal="pressed" from="SoundMenuContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]
