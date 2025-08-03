@@ -65,7 +65,12 @@ func _physics_process(delta: float) -> void:
 			print(GlobalSettings.Caravan1.line_2d)
 			GlobalSettings.Caravan1.line_2d = GlobalSettings.Caravan1.get_child(1)
 			for e in get_tree().get_nodes_in_group("Caravan"):
-				e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan1":
+						e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan2":
+						e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan3":
+						e.line_2d.add_point(Vector2(128, 128))
 			GlobalSettings.caravanPathBuiler.append(map.map_to_cube(Vector2i(0,0)))
 		else:
 			initialPoint = GlobalSettings.caravanPathBuiler[GlobalSettings.caravanPathBuiler.size() - 1]
@@ -73,7 +78,12 @@ func _physics_process(delta: float) -> void:
 		if result in map.cube_neighbors(initialPoint):
 			if result == map.map_to_cube(Vector2i(0,0)):
 				for e in get_tree().get_nodes_in_group("Caravan"):
-					e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan1":
+						e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan2":
+						e.line_2d.add_point(Vector2(128, 128))
+					if e.name == "Caravan3":
+						e.line_2d.add_point(Vector2(128, 128))
 				print("Complete Loop")
 				GlobalSettings.set_in_path_placement_mode(false)
 				
@@ -90,15 +100,13 @@ func _physics_process(delta: float) -> void:
 					Caravans[0].definePath()
 					Caravans[0].pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 2:
-					GlobalSettings.Caravan2.pathCurve = curve
-					GlobalSettings.Caravan2.line_2d.add_point(curveBuilder)
-					GlobalSettings.Caravan2.definePath()
-					GlobalSettings.Caravan2.pathHexArray = GlobalSettings.caravanPathBuiler
+					Caravans[1].pathCurve = curve
+					Caravans[1].definePath()
+					Caravans[1].pathHexArray = GlobalSettings.caravanPathBuiler
 				if GlobalSettings.caravanIndex == 3:
-					GlobalSettings.Caravan3.pathCurve = curve
-					GlobalSettings.Caravan3.line_2d.add_point(curveBuilder)
-					GlobalSettings.Caravan3.definePath()
-					GlobalSettings.Caravan3.pathHexArray = GlobalSettings.caravanPathBuiler
+					Caravans[2].pathCurve = curve
+					Caravans[2].definePath()
+					Caravans[2].pathHexArray = GlobalSettings.caravanPathBuiler
 				
 				GlobalSettings.caravanIndex = 0
 				GlobalSettings.caravanPathBuiler = []
