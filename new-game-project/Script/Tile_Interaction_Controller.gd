@@ -67,6 +67,21 @@ func _physics_process(delta: float) -> void:
 			if result == map.map_to_cube(Vector2i(0,0)):
 				print("Complete Loop")
 				GlobalSettings.set_in_path_placement_mode(false)
+				
+				#Path builder array to curve2d points
+				var curveBuilder = []
+				for point in GlobalSettings.caravanPathBuiler:
+					curveBuilder.append(map.cube_to_local(point))
+				var curve : Curve2D = Curve2D.new()
+				for point in curveBuilder:
+					curve.add_point(point)
+				
+				if GlobalSettings.caravanIndex == 1:
+					GlobalSettings.Caravan1.pathCurve = curve
+				if GlobalSettings.caravanIndex == 2:
+					GlobalSettings.Caravan2.pathCurve = curve
+				if GlobalSettings.caravanIndex == 3:
+					GlobalSettings.Caravan3.pathCurve = curve
 			else:
 				#Not yet in our path, add it if we have enough moves
 				if result not in GlobalSettings.caravanPathBuiler:
